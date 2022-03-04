@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()">
+    <select name="forma" onchange="location = this.value;">
+        <option value="../../eg/searching_eg/jump_eg.html">English</option>
+        <option value="../../bg/searching_bg/jump_bg.html">Български</option>
+    </select>
+    <br />
+    <p class="header">Jump Search</p>
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    <button id="generate" onclick="start()">Generate</button>
+    <div>
+        <input type="text" id="num_value" name="num_value" />
+        <button id="start" onclick="JumpSearch()">Jump Search</button>
+    </div>
+    <div id="text"></div>
+    <br>
+    <div id="array_size">Array size</div>
+    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
+    
+    <br>
+    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
+    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
+    <div class="rangeslider">
+        <div id="speed">Speed</div>
+        <input type="range" min="200" max="800" value="400" class="myslider" id="sliderRange">
+    </div>
+    <button id="myBtn" onclick="toggle()">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <section class="c-container">
+                <div id="container-success" style="display: none">
+                    <div class="o-circle c-container__circle o-circle__sign--success">
+                        <div class="o-circle__sign"></div>
+                    </div>
+                </div>
+                <div id="container-fail" style="display: none">
+                    <div class="o-circle c-container__circle o-circle__sign--failure">
+                        <div class="o-circle__sign"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+<script src="../../script.js"></script>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()" >
+    <select name="forma" onchange="location = this.value;">
+        <option value="../../eg/sorting_eg/cocktail_eg.html">English</option>
+        <option value="../../bg/sorting_bg/cocktail_bg.html">Български</option>
+    </select>
+    <br />
+    <p class="header">Cocktail Sort</p>
+    
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    <button id="generate" class="generate" onclick="start()">Generate</button>
+    <button id="start" onclick="CocktailSort()">Start</button>
+
+    <br>
+    <div id="array_size">Array size</div>
+    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
+
+    <br>
+    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
+    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
+    <div class="rangeslider">
+        <div id="speed">Speed</div>
+        <input type="range" min="100" max="800" value="400" class="myslider" id="sliderRange">
+    </div>
+
+    <button id="JSbtnClick" onclick="js()">JS</button>
+    <button id="JSbtnClick" onclick="python()">Python</button>
+    <button id="C#btnClick" onclick="c()">C#</button>
+
+    <div id="CodeJS" class="keepFormatted">
+function cocktailSort(arr)
+{
+    let swapped = true;
+    let start = 0;
+    let end = arr.length;
+
+    while (swapped == true) {
+        swapped = false;
+
+        for (let i = start; i < end - 1; ++i) {
+            if (arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+        swapped = false;
+        end = end - 1;
+
+        for (let i = end - 1; i >= start; i--) {
+            if (arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        start = start + 1;
+    }
+}
+    </div>
+
+    <div id="CodePy" style="display:none;" class="keepFormatted">
+def cocktailSort(arr):
+    n = len(arr)
+    swapped = True
+    start = 0
+    end = n-1
+    while (swapped == True):
+        swapped = False
+ 
+        for i in range(start, end):
+            if (arr[i] > arr[i + 1]):
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
+
+        if (swapped == False):
+            break
+
+        swapped = False
+        end = end-1
+
+        for i in range(end-1, start-1, -1):
+            if (arr[i] > arr[i + 1]):
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
+        start = start + 1
+    </div>
+    
+    <div id="CodeC#" style="display:none;" class="keepFormatted">
+static void cocktailSort(int[] arr)
+{
+    bool swapped = true;
+    int start = 0;
+    int end = arr.Length;
+
+    while (swapped == true) {
+        swapped = false;
+        for (int i = start; i < end - 1; ++i) {
+            if (a[i] > a[i + 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+
+        if (swapped == false)
+            break;
+
+        swapped = false;
+        end = end - 1;
+
+        for (int i = end - 1; i >= start; i--) {
+            if (arr[i] > arr[i + 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        start = start + 1;
+    }
+}
+    </div>
+</body>
+<script src="../../script.js"></script>
+</html>

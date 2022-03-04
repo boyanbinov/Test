@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()" >
+    <select name="forma" onchange="location = this.value;">
+        <option value="../../eg/sorting_eg/quick_eg.html">English</option>
+        <option value="../../bg/sorting_bg/quick_bg.html">Български</option>
+    </select>
+    <br />
+    <p class="header">Quick Sort</p>
+    
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    <button id="generate" class="generate" onclick="start()">Generate</button>
+    <button id="start" onclick="q()">Start</button>
+
+    <br>
+    <div id="array_size">Array size</div>
+    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
+
+    <br>
+    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
+    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
+    <div class="rangeslider">
+        <div id="speed">Speed</div>
+        <input type="range" min="100" max="600" value="400" class="myslider" id="sliderRange">
+    </div>
+
+    <button id="JSbtnClick" onclick="js()">JS</button>
+    <button id="JSbtnClick" onclick="python()">Python</button>
+    <button id="C#btnClick" onclick="c()">C#</button>
+
+    <div id="CodeJS" class="keepFormatted">
+function swap(arr, i, j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+function partition(arr, low, high) {
+    let pivot = arr[high];
+    let i = (low - 1);
+    
+    for (let j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(arr, i, j);
+        }
+    }
+    swap(arr, i + 1, high);
+    return (i + 1);
+}
+
+function quickSort(arr, low, high) {
+    if (low < high) {
+        let pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+    </div>
+
+    <div id="CodePy" style="display:none;" class="keepFormatted">
+def partition(start, end, array):
+    pivot_index = start
+    pivot = array[pivot_index]
+    while start < end:
+        while start < len(array) and array[start] <= pivot:
+            start += 1
+        while array[end] > pivot:
+            end -= 1
+        if(start < end):
+            array[start], array[end] = array[end], array[start]
+    array[end], array[pivot_index] = array[pivot_index], array[end]
+    return end
+
+def quick_sort(start, end, array):
+    if (start < end):
+        p = partition(start, end, array)
+        quick_sort(start, p - 1, array)
+        quick_sort(p + 1, end, array)
+    </div>
+    
+    <div id="CodeC#" style="display:none;" class="keepFormatted">
+static void sort(int []arr)
+{
+    int n = arr.Length;
+    for (int i = 0; i < n - 1; i++)
+    {
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++)
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
+        int temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+}
+    </div>
+</body>
+<script src="../../script.js"></script>
+</html>

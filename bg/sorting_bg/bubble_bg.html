@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()" >
+    <select name="forma" onchange="location = this.value;">
+        <option value="../../bg/sorting_bg/bubble_bg.html">Български</option>
+        <option value="../../eg/sorting_eg/bubble_eg.html">English</option>
+    </select>
+    <!-- <div class="demo">
+        <div>
+            <table class="lang">
+                <tr>
+                    <td class="tdlang">
+                    <span id="en" class="button_lang current_lang"><a href="../eg/index_eg.html">English</a></span>
+                    </td>
+                    <td class="tdlang"><span id="bg" class="button_lang"><a href="../bg/index_bg.html">Български</a></span></td>
+                </tr>
+            </table>
+            <div class="translation english" id="translate">The text here will change</div>
+        </div>
+    </div> -->
+
+    <br />
+    <p class="header">Bubble Sort</p>
+    
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    <button id="generate" class="generate" onclick="start()">Генерирай</button>
+    <!-- <button class="Remove" onclick="Clear('array')">remove</button> -->
+    <button id="bubble" onclick="BubbleSort()">Метод на мехурчето</button>
+    <button onclick="InsertionSort()">Сортиране чрез вмъкване</button>
+    <button onclick="SelectionSort()">Сортиране чрез избор</button>
+    <button onclick="q()">Бързо сортиране</button>
+    <button onclick="m()">Сортиране чрез сливане</button>
+    <button onclick="CountingSort()">Сортиране чрез броене</button>
+    <button onclick="CocktailSort()">Cocktail Sort</button>
+    <button onclick="HeapSort()">Heap Sort</button>
+
+    <br>
+    <div id="array_size">Размер на масива</div>
+    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
+    <!-- <label id="result"></label> -->
+
+    <!-- <label id='RADIO' class="btn btn-primary">
+        <input id="normal" type="radio" name="test" value="Normal">Normal
+    </label>
+    <label class="btn btn-primary">
+        <input id="neon" type="radio" name="test" value="Neon">Neon
+    </label>
+    <button onclick="radioBox()">Submit</button>-->
+    <br>
+    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
+    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
+    <div class="rangeslider">
+        <div id="speed">Скорост</div>
+        <input type="range" min="10" max="1000" value="400" class="myslider" id="sliderRange">
+        <p>Total swaps: <span id="total-swaps"></span></p>
+        <p>Total iterations: <span id="total-iterations"></span></p>
+    </div>
+
+    <button id="JSbtnClick" onclick="js()">JS</button>
+    <button id="JSbtnClick" onclick="python()">Python</button>
+    <button id="C#btnClick" onclick="c()">C#</button>
+
+    <div id="CodeJS" class="keepFormatted">
+function bblSort(arr){
+    for(var i = 0; i < arr.length; i++){
+        for(var j = 0; j < ( arr.length - i -1 ); j++){
+        if(arr[j] > arr[j+1]){
+            var temp = arr[j]
+            arr[j] = arr[j + 1]
+            arr[j+1] = temp
+            }
+        }
+    }
+    console.log(arr);
+}
+    </div>
+
+    <div id="CodePy" style="display:none;" class="keepFormatted">
+def bubbleSort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j + 1] :
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    </div>
+    
+    <div id="CodeC#" style="display:none;" class="keepFormatted">
+static void bubbleSort(int []arr)
+{
+    int n = arr.Length;
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+}
+    </div>
+    <!-- <script>
+        function rangeFunction() {
+	generatearray();
+}
+    </script> -->
+</body>
+<script src="../../script.js"></script>
+</html>
