@@ -12,20 +12,6 @@
         <option value="../../eg/sorting_eg/insertion_eg.html">English</option>
         <option value="../../bg/sorting_bg/insertion_bg.html">Български</option>
     </select>
-    <!-- <div class="demo">
-        <div>
-            <table class="lang">
-                <tr>
-                    <td class="tdlang">
-                    <span id="en" class="button_lang current_lang"><a href="../eg/index_eg.html">English</a></span>
-                    </td>
-                    <td class="tdlang"><span id="bg" class="button_lang"><a href="../bg/index_bg.html">Български</a></span></td>
-                </tr>
-            </table>
-            <div class="translation english" id="translate">The text here will change</div>
-        </div>
-    </div> -->
-
     <br />
     <p class="header">Insertion Sort</p>
     
@@ -37,16 +23,8 @@
     <br>
     <br>
     <button id="generate" class="generate" onclick="start()">Generate</button>
-    <!-- <button class="Remove" onclick="Clear('array')">remove</button> -->
-    <button id="bubble" onclick="BubbleSort()">Bubble Sort</button>
-    <button onclick="InsertionSort()">Insertion Sort</button>
-    <button onclick="SelectionSort()">Selection Sort</button>
-    <button onclick="q()"> Quck sort</button>
-    <button onclick="m()"> Merge sort</button>
-    <button onclick="CountingSort()"> Counting Sort</button>
-    <button onclick="CocktailSort()">Cocktail Sort</button>
-    <button onclick="HeapSort()">Heap Sort</button>
-
+    <button onclick="InsertionSort()">Start</button>
+   
     <br>
     <div id="array_size">Array size</div>
     <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
