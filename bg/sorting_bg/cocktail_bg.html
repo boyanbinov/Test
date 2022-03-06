@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()" >
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../index_bg.html">Home</a></li>
+                    <li><a href="./bubble_bg.html">Bubble</a></li>
+                    <li><a href="./cocktail_bg.html">Cocktail</a></li>
+                    <li><a href="./counting_bg.html">Counting</a></li>
+                    <li><a href="./heap_bg.html">Heap</a></li>
+                    <li><a href="./insertion_bg.html">Insertion</a></li>
+                    <li><a href="./merge_bg.html">Merge</a></li>
+                    <li><a href="./quick_bg.html">Quick</a></li>
+                    <li><a href="./selection_bg.html">Selection</a></li>
+                    <li><a href="./shell_bg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../bg/sorting_bg/cocktail_bg.html">Български</option>
+                <option value="../../eg/sorting_eg/cocktail_eg.html">English</option>
+            </select>
+        </div>
+    </header>
+    <br />
+    <p class="header">Cocktail Sort</p>
+    
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    <br>
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Размер на масива</div>
+            <input oninput="rangeFunction()" type="range"  class="slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="generate custom-btn btn-1 margin-right" onclick="start()">Генерирай</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="CocktailSort()">Старт</button>
+        <div class="rangeslider">
+            <div id="speed">Скорост</div>
+            <input type="range" min="100" max="800" value="400" class="slider" id="sliderRange">
+        </div>
+    </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
+function cocktailSort(arr)
+{
+    let swapped = true;
+    let start = 0;
+    let end = arr.length;
+
+    while (swapped == true) {
+        swapped = false;
+
+        for (let i = start; i < end - 1; ++i) {
+            if (arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+        swapped = false;
+        end = end - 1;
+
+        for (let i = end - 1; i >= start; i--) {
+            if (arr[i] > arr[i + 1]) {
+                let temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        start = start + 1;
+    }
+}
+        </div>
+    
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
+def cocktailSort(arr):
+    n = len(arr)
+    swapped = True
+    start = 0
+    end = n-1
+    while (swapped == True):
+        swapped = False
+    
+        for i in range(start, end):
+            if (arr[i] > arr[i + 1]):
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
+
+        if (swapped == False):
+            break
+
+        swapped = False
+        end = end-1
+
+        for i in range(end-1, start-1, -1):
+            if (arr[i] > arr[i + 1]):
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+                swapped = True
+        start = start + 1
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
+static void cocktailSort(int[] arr)
+{
+    bool swapped = true;
+    int start = 0;
+    int end = arr.Length;
+
+    while (swapped == true) {
+        swapped = false;
+        for (int i = start; i < end - 1; ++i) {
+            if (a[i] > a[i + 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+
+        if (swapped == false)
+            break;
+
+        swapped = false;
+        end = end - 1;
+
+        for (int i = end - 1; i >= start; i--) {
+            if (arr[i] > arr[i + 1]) {
+                int temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+                swapped = true;
+            }
+        }
+        start = start + 1;
+    }
+}
+        </div>
+        <div class="flex-item-right">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae velit praesentium cupiditate facilis dolore? Fugit omnis dicta porro commodi beatae vel tempora, quasi quia perferendis laborum maxime illum, labore quidem?
+        </div>
+    </div>
+</body>
+<script src="../../script.js"></script>
+</html>

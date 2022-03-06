@@ -8,10 +8,28 @@
     <title>Document</title>
 </head>
 <body onload="start()" >
-    <select name="forma" onchange="location = this.value;">
-        <option value="../../eg/sorting_eg/quick_eg.html">English</option>
-        <option value="../../bg/sorting_bg/quick_bg.html">Български</option>
-    </select>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../../index_eg.html">Home</a></li>
+                    <li><a href="./bubble_eg.html">Bubble</a></li>
+                    <li><a href="./cocktail_eg.html">Cocktail</a></li>
+                    <li><a href="./counting_eg.html">Counting</a></li>
+                    <li><a href="./heap_eg.html">Heap</a></li>
+                    <li><a href="./insertion_eg.html">Insertion</a></li>
+                    <li><a href="./merge_eg.html">Merge</a></li>
+                    <li><a href="./quick_eg.html">Quick</a></li>
+                    <li><a href="./selection_eg.html">Selection</a></li>
+                    <li><a href="./shell_eg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../eg/sorting_eg/quick_eg.html">English</option>
+                <option value="../../bg/sorting_bg/quick_bg.html">Български</option>
+            </select>
+        </div>
+    </header>
     <br />
     <p class="header">Quick Sort</p>
     
@@ -22,26 +40,28 @@
     <div id="count"></div>
     <br>
     <br>
-    <button id="generate" class="generate" onclick="start()">Generate</button>
-    <button id="start" onclick="q()">Start</button>
-
+    
     <br>
-    <div id="array_size">Array size</div>
-    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
-
-    <br>
-    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
-    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
-    <div class="rangeslider">
-        <div id="speed">Speed</div>
-        <input type="range" min="100" max="600" value="400" class="myslider" id="sliderRange">
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Array size</div>
+            <input oninput="rangeFunction()" type="range"  class="myslider slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Generate</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="q()">Start</button>
+        <div class="rangeslider">
+            <div id="speed">Speed</div>
+            <input type="range" min="100" max="800" value="400" class="myslider slider" id="sliderRange">
+        </div>
     </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
 
-    <button id="JSbtnClick" onclick="js()">JS</button>
-    <button id="JSbtnClick" onclick="python()">Python</button>
-    <button id="C#btnClick" onclick="c()">C#</button>
-
-    <div id="CodeJS" class="keepFormatted">
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
 function swap(arr, i, j) {
     let temp = arr[i];
     arr[i] = arr[j];
@@ -69,9 +89,9 @@ function quickSort(arr, low, high) {
         quickSort(arr, pi + 1, high);
     }
 }
-    </div>
-
-    <div id="CodePy" style="display:none;" class="keepFormatted">
+        </div>
+    
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
 def partition(start, end, array):
     pivot_index = start
     pivot = array[pivot_index]
@@ -90,23 +110,61 @@ def quick_sort(start, end, array):
         p = partition(start, end, array)
         quick_sort(start, p - 1, array)
         quick_sort(p + 1, end, array)
-    </div>
-    
-    <div id="CodeC#" style="display:none;" class="keepFormatted">
-static void sort(int []arr)
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
+private static void Quick_Sort(int[] arr, int left, int right) 
 {
-    int n = arr.Length;
-    for (int i = 0; i < n - 1; i++)
+    if (left < right)
     {
-        int min_idx = i;
-        for (int j = i + 1; j < n; j++)
-            if (arr[j] < arr[min_idx])
-                min_idx = j;
-        int temp = arr[min_idx];
-        arr[min_idx] = arr[i];
-        arr[i] = temp;
+        int pivot = Partition(arr, left, right);
+
+        if (pivot > 1) {
+            Quick_Sort(arr, left, pivot - 1);
+        }
+        if (pivot + 1 < right) {
+            Quick_Sort(arr, pivot + 1, right);
+        }
+    }
+
+}
+
+private static int Partition(int[] arr, int left, int right)
+{
+    int pivot = arr[left];
+    while (true) 
+    {
+
+        while (arr[left] < pivot) 
+        {
+            left++;
+        }
+
+        while (arr[right] > pivot)
+        {
+            right--;
+        }
+
+        if (left < right)
+        {
+            if (arr[left] == arr[right]) return right;
+
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+
+        }
+        else 
+        {
+            return right;
+        }
     }
 }
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid accusamus ea error dolorum consectetur laudantium sapiente dignissimos nihil placeat, est beatae reiciendis tempore voluptatibus voluptas magni repudiandae autem laborum ex!
+        </div>
     </div>
 </body>
 <script src="../../script.js"></script>

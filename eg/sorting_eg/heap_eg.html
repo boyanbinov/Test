@@ -8,10 +8,28 @@
     <title>Document</title>
 </head>
 <body onload="start()" >
-    <select name="forma" onchange="location = this.value;">
-        <option value="../../eg/sorting_eg/heap_eg.html">English</option>
-        <option value="../../bg/sorting_bg/heap_bg.html">Български</option>
-    </select>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../../index_eg.html">Home</a></li>
+                    <li><a href="./bubble_eg.html">Bubble</a></li>
+                    <li><a href="./cocktail_eg.html">Cocktail</a></li>
+                    <li><a href="./counting_eg.html">Counting</a></li>
+                    <li><a href="./heap_eg.html">Heap</a></li>
+                    <li><a href="./insertion_eg.html">Insertion</a></li>
+                    <li><a href="./merge_eg.html">Merge</a></li>
+                    <li><a href="./quick_eg.html">Quick</a></li>
+                    <li><a href="./selection_eg.html">Selection</a></li>
+                    <li><a href="./shell_eg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../eg/sorting_eg/heap_eg.html">English</option>
+                <option value="../../bg/sorting_bg/heap_bg.html">Български</option>
+            </select>
+        </div>
+    </header>
     <br />
     <p class="header">Heap Sort</p>
     
@@ -22,26 +40,28 @@
     <div id="count"></div>
     <br>
     <br>
-    <button id="generate" class="generate" onclick="start()">Generate</button>
-    <button id="start" onclick="HeapSort()">Start</button>
-
+    
     <br>
-    <div id="array_size">Array size</div>
-    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
-
-    <br>
-    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
-    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
-    <div class="rangeslider">
-        <div id="speed">Speed</div>
-        <input type="range" min="100" max="800" value="400" class="myslider" id="sliderRange">
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Array size</div>
+            <input oninput="rangeFunction()" type="range"  class="myslider slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Generate</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="HeapSort()">Start</button>
+        <div class="rangeslider">
+            <div id="speed">Speed</div>
+            <input type="range" min="100" max="800" value="400" class="myslider slider" id="sliderRange">
+        </div>
     </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
 
-    <button id="JSbtnClick" onclick="js()">JS</button>
-    <button id="JSbtnClick" onclick="python()">Python</button>
-    <button id="C#btnClick" onclick="c()">C#</button>
-
-    <div id="CodeJS" class="keepFormatted">
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
 function heap_sort(arr){
     var n = arr.length;
     for (var i = Math.floor(n / 2) - 1; i >= 0; i--)
@@ -75,9 +95,9 @@ function heapify(arr, n, i)
         heapify(arr, n, largest);
     }
 }
-    </div>
-
-    <div id="CodePy" style="display:none;" class="keepFormatted">
+        </div>
+    
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
 def heapify(arr, n, i):
     largest = i
     l = 2 * i + 1
@@ -101,9 +121,9 @@ def heapSort(arr):
     for i in range(n-1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]
         heapify(arr, i, 0)
-    </div>
-    
-    <div id="CodeC#" style="display:none;" class="keepFormatted">
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
 public void heap_sort(int[] arr)
 {
     int n = arr.Length;
@@ -138,6 +158,10 @@ void heapify(int[] arr, int n, int i)
         heapify(arr, n, largest);
     }
 }
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio, maiores obcaecati quasi inventore deserunt ex. Temporibus veritatis illum nihil deserunt quidem voluptatem ullam, laboriosam molestias repudiandae consectetur repellendus? Sapiente?
+        </div>
     </div>
 </body>
 <script src="../../script.js"></script>

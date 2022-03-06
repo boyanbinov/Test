@@ -8,10 +8,23 @@
     <title>Document</title>
 </head>
 <body onload="start()">
-    <select name="forma" onchange="location = this.value;">
-        <option value="../../eg/searching_eg/linear_eg.html">English</option>
-        <option value="../../bg/searching_bg/linear_bg.html">Български</option>
-    </select>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../../index_eg.html">Home</a></li>
+                    <li><a href="./binary_eg.html">Binary</a></li>
+                    <li><a href="./jump_eg.html">Jump</a></li>
+                    <li><a href="./linear_eg.html">Linear</a></li>
+                    <li><a href="./ternary_eg.html">Ternary</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../eg/searching_eg/linear_eg.html">English</option>
+                <option value="../../bg/searching_bg/linear_bg.html">Български</option>
+            </select>
+        </div>
+    </header>
     <br />
     <p class="header">Linear Search</p>
     <div id="array"></div>
@@ -21,24 +34,75 @@
     <div id="count"></div>
     <br>
     <br>
-    <button id="generate" onclick="start()">Generate</button>
-    <div>
-        <input type="text" id="num_value" name="num_value" />
-        <button id="start" onclick="LinearSearch()">Start</button>
-    </div>
-    <div id="text"></div>
     <br>
-    <div id="array_size">Array size</div>
-    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
-    
     <br>
-    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
-    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
-    <div class="rangeslider">
-        <div id="speed">Speed</div>
-        <input type="range" min="200" max="800" value="400" class="myslider" id="sliderRange">
+    <div class="flex-parent jc-center">
+        <form>
+            <div class="group">
+                <input type="text" id="num_value" name="num_value" autocomplete="off">
+                <label>Number to search</label>
+            </div>  
+        </form>
     </div>
-    <button id="myBtn" onclick="toggle()">Open Modal</button>
+    <br>
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Array size</div>
+            <input oninput="rangeFunction()" type="range"  class="myslider slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Generate</button>
+        <div>
+            <button id="start" class="custom-btn btn-1 margin-right" onclick="LinearSearch()">Start</button>
+        </div>
+        <div class="rangeslider">
+            <div id="speed">Speed</div>
+            <input type="range" min="100" max="800" value="400" class="myslider slider" id="sliderRange">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
+function search(arr, n, x)
+{
+    let i;
+    for (i = 0; i < n; i++)
+        if (arr[i] == x)
+            return i;
+    return -1;
+}
+        </div>
+            
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
+def search(arr, n, x):
+
+    for i in range(0, n):
+        if (arr[i] == x):
+            return i
+    return -1
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
+public static int search(int[] arr, int x)
+{
+    int n = arr.Length;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i] == x)
+            return i;
+    }
+    return -1;
+}
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt harum ipsum aliquid doloremque dicta, fugit facere vitae tempora cupiditate alias eos quisquam accusantium recusandae illo vel quod, adipisci facilis voluptatum!
+        </div>
+    </div>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -61,4 +125,5 @@
     </div>
 </body>
 <script src="../../script.js"></script>
+<script src="../../is_Pressed.js"></script>
 </html>

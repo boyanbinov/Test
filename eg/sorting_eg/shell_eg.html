@@ -8,24 +8,28 @@
     <title>Document</title>
 </head>
 <body onload="start()" >
-    <select name="forma" onchange="location = this.value;">
-        <option value="../../eg/sorting_eg/shell_eg.html">English</option>
-        <option value="../../bg/sorting_bg/shell_bg.html">Български</option>
-    </select>
-    <!-- <div class="demo">
-        <div>
-            <table class="lang">
-                <tr>
-                    <td class="tdlang">
-                    <span id="en" class="button_lang current_lang"><a href="../eg/index_eg.html">English</a></span>
-                    </td>
-                    <td class="tdlang"><span id="bg" class="button_lang"><a href="../bg/index_bg.html">Български</a></span></td>
-                </tr>
-            </table>
-            <div class="translation english" id="translate">The text here will change</div>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../../index_eg.html">Home</a></li>
+                    <li><a href="./bubble_eg.html">Bubble</a></li>
+                    <li><a href="./cocktail_eg.html">Cocktail</a></li>
+                    <li><a href="./counting_eg.html">Counting</a></li>
+                    <li><a href="./heap_eg.html">Heap</a></li>
+                    <li><a href="./insertion_eg.html">Insertion</a></li>
+                    <li><a href="./merge_eg.html">Merge</a></li>
+                    <li><a href="./quick_eg.html">Quick</a></li>
+                    <li><a href="./selection_eg.html">Selection</a></li>
+                    <li><a href="./shell_eg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../eg/sorting_eg/shell_eg.html">English</option>
+                <option value="../../bg/sorting_bg/shell_bg.html">Български</option>
+            </select>
         </div>
-    </div> -->
-
+    </header>
     <br />
     <p class="header">Shell Sort</p>
     
@@ -36,43 +40,28 @@
     <div id="count"></div>
     <br>
     <br>
-    <button id="generate" class="generate" onclick="start()">Generate</button>
-    <!-- <button class="Remove" onclick="Clear('array')">remove</button> -->
-    <!-- <button id="bubble" onclick="BubbleSort()">Метод на мехурчето</button>
-    <button onclick="InsertionSort()">Сортиране чрез вмъкване</button>
-    <button onclick="SelectionSort()">Сортиране чрез избор</button>
-    <button onclick="q()">Бързо сортиране</button>
-    <button onclick="m()">Сортиране чрез сливане</button>
-    <button onclick="CountingSort()">Сортиране чрез броене</button>
-    <button onclick="CocktailSort()">Cocktail Sort</button>
-    <button onclick="HeapSort()">Heap Sort</button> -->
-    <button id="start" onclick="ShellSort()">Start</button>
-
+    
     <br>
-    <div id="array_size">Array size</div>
-    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
-    <!-- <label id="result"></label> -->
-
-    <!-- <label id='RADIO' class="btn btn-primary">
-        <input id="normal" type="radio" name="test" value="Normal">Normal
-    </label>
-    <label class="btn btn-primary">
-        <input id="neon" type="radio" name="test" value="Neon">Neon
-    </label>
-    <button onclick="radioBox()">Submit</button>-->
-    <br>
-    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
-    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
-    <div class="rangeslider">
-        <div id="speed">Speed</div>
-        <input type="range" min="110" max="400" value="240" class="myslider" id="sliderRange">
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Array size</div>
+            <input oninput="rangeFunction()" type="range"  class="myslider slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Generate</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="ShellSort()">Start</button>
+        <div class="rangeslider">
+            <div id="speed">Speed</div>
+            <input type="range" min="100" max="800" value="400" class="myslider slider" id="sliderRange">
+        </div>
     </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
 
-    <button id="JSbtnClick" onclick="js()">JS</button>
-    <button id="JSbtnClick" onclick="python()">Python</button>
-    <button id="C#btnClick" onclick="c()">C#</button>
-
-    <div id="CodeJS" class="keepFormatted">
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
 function shell_sort(arr){
     let n = arr.length;
         for (let gap = Math.floor(n/2); gap > 0; gap = Math.floor(gap/2)){
@@ -84,11 +73,11 @@ function shell_sort(arr){
                 arr[j] = temp;
             }
         }
-        return arr;
+    return arr;
 }
-    </div>
-
-    <div id="CodePy" style="display:none;" class="keepFormatted">
+        </div>
+    
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
 def shellSort(arr):
     gap = len(arr) // 2
     while gap > 0:
@@ -105,25 +94,28 @@ def shellSort(arr):
                     arr[k-gap],arr[k] = arr[k],arr[k-gap]
                 k -= 1
         gap //= 2
-    </div>
-    
-    <div id="CodeC#" style="display:none;" class="keepFormatted">
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
 public int shell_sort(int []arr)
 {
-	int n = arr.Length;
-	for (int gap = n/2; gap > 0; gap /= 2)
-	{
-		for (int i = gap; i < n; i += 1)
-		{
-			int temp = arr[i];
-			int j;
-			for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
-				arr[j] = arr[j - gap];
-			arr[j] = temp;
-		}
-	}
-	return 0;
+    int n = arr.Length;
+    for (int gap = n/2; gap > 0; gap /= 2)
+    {
+        for (int i = gap; i < n; i += 1)
+        {
+            int temp = arr[i];
+            int j;
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+                arr[j] = arr[j - gap];
+            arr[j] = temp;
+        }
+    }
+    return 0;
 }
+        </div>
+
+        <div class="flex-item-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, voluptatem. Autem nobis inventore tempora, voluptatum accusamus quam molestiae delectus similique quasi facilis natus eaque. Magni accusamus rerum est deleniti ad!</div>
     </div>
     <!-- <script>
         function rangeFunction() {

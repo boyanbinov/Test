@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()" >
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../index_bg.html">Home</a></li>
+                    <li><a href="./bubble_bg.html">Bubble</a></li>
+                    <li><a href="./cocktail_bg.html">Cocktail</a></li>
+                    <li><a href="./counting_bg.html">Counting</a></li>
+                    <li><a href="./heap_bg.html">Heap</a></li>
+                    <li><a href="./insertion_bg.html">Insertion</a></li>
+                    <li><a href="./merge_bg.html">Merge</a></li>
+                    <li><a href="./quick_bg.html">Quick</a></li>
+                    <li><a href="./selection_bg.html">Selection</a></li>
+                    <li><a href="./shell_bg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../bg/sorting_bg/heap_bg.html">Български</option>
+                <option value="../../eg/sorting_eg/heap_eg.html">English</option>
+            </select>
+        </div>
+    </header>
+    <br />
+    <p class="header">Heap Sort</p>
+    
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    
+    <br>
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Размер на масива</div>
+            <input oninput="rangeFunction()" type="range"  class="slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Генерирай</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="HeapSort()">Старт</button>
+        <div class="rangeslider">
+            <div id="speed">Скорост</div>
+            <input type="range" min="100" max="800" value="400" class="slider" id="sliderRange">
+        </div>
+    </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
+function heap_sort(arr){
+    var n = arr.length;
+    for (var i = Math.floor(n / 2) - 1; i >= 0; i--)
+        heapify(arr, n, i);
+    for (var i = n - 1; i > 0; i--) {
+        var temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+    }
+}
+
+function heapify(arr, n, i)
+{
+    var largest = i;
+    var l = 2 * i + 1; // left = 2*i + 1
+    var r = 2 * i + 2; // right = 2*i + 2
+
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+
+    if (largest != i) {
+        var swap = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = swap;
+
+        heapify(arr, n, largest);
+    }
+}
+        </div>
+    
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
+def heapify(arr, n, i):
+    largest = i
+    l = 2 * i + 1
+    r = 2 * i + 2
+
+    if l < n and arr[largest] < arr[l]:
+        largest = l
+
+    if r < n and arr[largest] < arr[r]:
+        largest = r
+
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+    
+def heapSort(arr):
+    n = len(arr)
+    for i in range(n//2 - 1, -1, -1):
+        heapify(arr, n, i)
+    
+    for i in range(n-1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]
+        heapify(arr, i, 0)
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
+public void heap_sort(int[] arr)
+{
+    int n = arr.Length;
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    for (int i = n - 1; i > 0; i--) {
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+    }
+}
+
+void heapify(int[] arr, int n, int i)
+{
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
+
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+
+    if (largest != i) {
+        int swap = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = swap;
+        heapify(arr, n, largest);
+    }
+}
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio, maiores obcaecati quasi inventore deserunt ex. Temporibus veritatis illum nihil deserunt quidem voluptatem ullam, laboriosam molestias repudiandae consectetur repellendus? Sapiente?
+        </div>
+    </div>
+</body>
+<script src="../../script.js"></script>
+</html>

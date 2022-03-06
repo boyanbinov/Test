@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()" >
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../index_bg.html">Home</a></li>
+                    <li><a href="./bubble_bg.html">Bubble</a></li>
+                    <li><a href="./cocktail_bg.html">Cocktail</a></li>
+                    <li><a href="./counting_bg.html">Counting</a></li>
+                    <li><a href="./heap_bg.html">Heap</a></li>
+                    <li><a href="./insertion_bg.html">Insertion</a></li>
+                    <li><a href="./merge_bg.html">Merge</a></li>
+                    <li><a href="./quick_bg.html">Quick</a></li>
+                    <li><a href="./selection_bg.html">Selection</a></li>
+                    <li><a href="./shell_bg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../bg/sorting_bg/selection_bg.html">Български</option>
+                <option value="../../eg/sorting_eg/selection_eg.html">English</option>
+            </select>
+        </div>
+    </header>
+    <br />
+    <p class="header">Сортиране чрез пряка селекция</p>
+    
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    
+    <br>
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Размер на масива</div>
+            <input oninput="rangeFunction()" type="range"  class="slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Генерирай</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="SelectionSort()">Старт</button>
+        <div class="rangeslider">
+            <div id="speed">Скорост</div>
+            <input type="range" min="100" max="800" value="400" class="slider" id="sliderRange">
+        </div>
+    </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
+function swap(arr,xp, yp){
+    var temp = arr[xp];
+    arr[xp] = arr[yp];
+    arr[yp] = temp;
+}
+    
+function selectionSort(arr,  n){
+    var i, j, min_idx;
+    for (i = 0; i < n-1; i++)
+    {
+        min_idx = i;
+        for (j = i + 1; j < n; j++)
+        if (arr[j] < arr[min_idx])
+            min_idx = j;
+        swap(arr,min_idx, i);
+    }
+}
+    </div>
+
+    <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
+for i in range(len(A)):
+    min_idx = i
+    for j in range(i+1, len(A)):
+        if A[min_idx] > A[j]:
+            min_idx = j     
+    A[i], A[min_idx] = A[min_idx], A[i]
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
+static void sort(int []arr)
+{
+    int n = arr.Length;
+    for (int i = 0; i < n - 1; i++)
+    {
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++)
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
+        int temp = arr[min_idx];
+        arr[min_idx] = arr[i];
+        arr[i] = temp;
+    }
+}
+        </div>
+        <div class="flex-item-right">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, nemo? Maiores, possimus? Sunt aspernatur autem, aut cum inventore quo? Hic dolore id, nesciunt quibusdam porro culpa praesentium. Soluta, ipsam obcaecati.
+        </div>
+    </div>
+</body>
+<script src="../../script.js"></script>
+</html>

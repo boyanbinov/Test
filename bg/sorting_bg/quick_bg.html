@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()" >
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../index_bg.html">Home</a></li>
+                    <li><a href="./bubble_bg.html">Bubble</a></li>
+                    <li><a href="./cocktail_bg.html">Cocktail</a></li>
+                    <li><a href="./counting_bg.html">Counting</a></li>
+                    <li><a href="./heap_bg.html">Heap</a></li>
+                    <li><a href="./insertion_bg.html">Insertion</a></li>
+                    <li><a href="./merge_bg.html">Merge</a></li>
+                    <li><a href="./quick_bg.html">Quick</a></li>
+                    <li><a href="./selection_bg.html">Selection</a></li>
+                    <li><a href="./shell_bg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../bg/sorting_bg/quick_bg.html">Български</option>
+                <option value="../../eg/sorting_eg/quick_eg.html">English</option>
+            </select>
+        </div>
+    </header>
+    <br />
+    <p class="header">Бързо сортиране</p>
+    
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    
+    <br>
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Размер на масива</div>
+            <input oninput="rangeFunction()" type="range"  class="slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Генерирай</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="q()">Старт</button>
+        <div class="rangeslider">
+            <div id="speed">Скорост</div>
+            <input type="range" min="100" max="800" value="400" class="slider" id="sliderRange">
+        </div>
+    </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
+function swap(arr, i, j) {
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+function partition(arr, low, high) {
+    let pivot = arr[high];
+    let i = (low - 1);
+    
+    for (let j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(arr, i, j);
+        }
+    }
+    swap(arr, i + 1, high);
+    return (i + 1);
+}
+
+function quickSort(arr, low, high) {
+    if (low < high) {
+        let pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+        </div>
+    
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
+def partition(start, end, array):
+    pivot_index = start
+    pivot = array[pivot_index]
+    while start < end:
+        while start < len(array) and array[start] <= pivot:
+            start += 1
+        while array[end] > pivot:
+            end -= 1
+        if(start < end):
+            array[start], array[end] = array[end], array[start]
+    array[end], array[pivot_index] = array[pivot_index], array[end]
+    return end
+
+def quick_sort(start, end, array):
+    if (start < end):
+        p = partition(start, end, array)
+        quick_sort(start, p - 1, array)
+        quick_sort(p + 1, end, array)
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
+private static void Quick_Sort(int[] arr, int left, int right) 
+{
+    if (left < right)
+    {
+        int pivot = Partition(arr, left, right);
+
+        if (pivot > 1) {
+            Quick_Sort(arr, left, pivot - 1);
+        }
+        if (pivot + 1 < right) {
+            Quick_Sort(arr, pivot + 1, right);
+        }
+    }
+
+}
+
+private static int Partition(int[] arr, int left, int right)
+{
+    int pivot = arr[left];
+    while (true) 
+    {
+
+        while (arr[left] < pivot) 
+        {
+            left++;
+        }
+
+        while (arr[right] > pivot)
+        {
+            right--;
+        }
+
+        if (left < right)
+        {
+            if (arr[left] == arr[right]) return right;
+
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+
+        }
+        else 
+        {
+            return right;
+        }
+    }
+}
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid accusamus ea error dolorum consectetur laudantium sapiente dignissimos nihil placeat, est beatae reiciendis tempore voluptatibus voluptas magni repudiandae autem laborum ex!
+        </div>
+    </div>
+</body>
+<script src="../../script.js"></script>
+</html>

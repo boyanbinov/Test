@@ -8,10 +8,28 @@
     <title>Document</title>
 </head>
 <body onload="start()" >
-    <select name="forma" onchange="location = this.value;">
-        <option value="../../eg/sorting_eg/selection_eg.html">English</option>
-        <option value="../../bg/sorting_bg/selection_bg.html">Български</option>
-    </select>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../../index_eg.html">Home</a></li>
+                    <li><a href="./bubble_eg.html">Bubble</a></li>
+                    <li><a href="./cocktail_eg.html">Cocktail</a></li>
+                    <li><a href="./counting_eg.html">Counting</a></li>
+                    <li><a href="./heap_eg.html">Heap</a></li>
+                    <li><a href="./insertion_eg.html">Insertion</a></li>
+                    <li><a href="./merge_eg.html">Merge</a></li>
+                    <li><a href="./quick_eg.html">Quick</a></li>
+                    <li><a href="./selection_eg.html">Selection</a></li>
+                    <li><a href="./shell_eg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../eg/sorting_eg/selection_eg.html">English</option>
+                <option value="../../bg/sorting_bg/selection_bg.html">Български</option>
+            </select>
+        </div>
+    </header>
     <br />
     <p class="header">Selection Sort</p>
     
@@ -22,26 +40,28 @@
     <div id="count"></div>
     <br>
     <br>
-    <button id="generate" class="generate" onclick="start()">Generate</button>
-    <button id="start" onclick="SelectionSort()">Start</button>
-
+    
     <br>
-    <div id="array_size">Array size</div>
-    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
-
-    <br>
-    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
-    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
-    <div class="rangeslider">
-        <div id="speed">Speed</div>
-        <input type="range" min="80" max="800" value="400" class="myslider" id="sliderRange">
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Array size</div>
+            <input oninput="rangeFunction()" type="range"  class="myslider slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Generate</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="SelectionSort()">Start</button>
+        <div class="rangeslider">
+            <div id="speed">Speed</div>
+            <input type="range" min="100" max="800" value="400" class="myslider slider" id="sliderRange">
+        </div>
     </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
 
-    <button id="JSbtnClick" onclick="js()">JS</button>
-    <button id="JSbtnClick" onclick="python()">Python</button>
-    <button id="C#btnClick" onclick="c()">C#</button>
-
-    <div id="CodeJS" class="keepFormatted">
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
 function swap(arr,xp, yp){
     var temp = arr[xp];
     arr[xp] = arr[yp];
@@ -50,52 +70,45 @@ function swap(arr,xp, yp){
     
 function selectionSort(arr,  n){
     var i, j, min_idx;
-    
-    // One by one move boundary of unsorted subarray
     for (i = 0; i < n-1; i++)
     {
-        // Find the minimum element in unsorted array
         min_idx = i;
         for (j = i + 1; j < n; j++)
         if (arr[j] < arr[min_idx])
             min_idx = j;
-    
-        // Swap the found minimum element with the first element
         swap(arr,min_idx, i);
     }
 }
     </div>
 
-    <div id="CodePy" style="display:none;" class="keepFormatted">
+    <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
 for i in range(len(A)):
     min_idx = i
     for j in range(i+1, len(A)):
         if A[min_idx] > A[j]:
             min_idx = j     
     A[i], A[min_idx] = A[min_idx], A[i]
-    </div>
-    
-    <div id="CodeC#" style="display:none;" class="keepFormatted">
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
 static void sort(int []arr)
 {
     int n = arr.Length;
-
-    // One by one move boundary of unsorted subarray
     for (int i = 0; i < n - 1; i++)
     {
-        // Find the minimum element in unsorted array
         int min_idx = i;
         for (int j = i + 1; j < n; j++)
             if (arr[j] < arr[min_idx])
                 min_idx = j;
-
-        // Swap the found minimum element with the first
-        // element
         int temp = arr[min_idx];
         arr[min_idx] = arr[i];
         arr[i] = temp;
     }
 }
+        </div>
+        <div class="flex-item-right">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, nemo? Maiores, possimus? Sunt aspernatur autem, aut cum inventore quo? Hic dolore id, nesciunt quibusdam porro culpa praesentium. Soluta, ipsam obcaecati.
+        </div>
     </div>
 </body>
 <script src="../../script.js"></script>

@@ -7,11 +7,24 @@
     <link rel="stylesheet" href="../../style.css" />
     <title>Document</title>
 </head>
-<body onload="start()">
-    <select name="forma" onchange="location = this.value;">
-        <option value="../../eg/searching_eg/ternary_eg.html">English</option>
-        <option value="../../bg/searching_bg/ternary_bg.html">Български</option>
-    </select>
+<body onload="start_sorted()">
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../../index_eg.html">Home</a></li>
+                    <li><a href="./binary_eg.html">Binary</a></li>
+                    <li><a href="./jump_eg.html">Jump</a></li>
+                    <li><a href="./linear_eg.html">Linear</a></li>
+                    <li><a href="./ternary_eg.html">Ternary</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../eg/searching_eg/ternary_eg.html">English</option>
+                <option value="../../bg/searching_bg/ternary_bg.html">Български</option>
+            </select>
+        </div>
+    </header>
     <br />
     <p class="header">Ternary Search</p>
     <div id="array"></div>
@@ -21,28 +34,115 @@
     <div id="count"></div>
     <br>
     <br>
-    <button id="generate" onclick="start()">Generate</button>
-    <div>
-        <input type="text" id="num_value" name="num_value" />
-        <button id="start" onclick="TernarySearch()">Start</button>
-    </div>
-    <div id="text"></div>
     <br>
-    <div id="array_size">Array size</div>
-    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
-    
     <br>
-    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
-    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
-    <div class="rangeslider">
-        <div id="speed">Speed</div>
-        <input type="range" min="200" max="800" value="400" class="myslider" id="sliderRange">
+    <div class="flex-parent jc-center">
+        <form>
+            <div class="group">
+                <input type="text" id="num_value" name="num_value" autocomplete="off">
+                <label>Number to search</label>
+            </div>  
+        </form>
     </div>
-    <button id="myBtn" onclick="toggle()">Open Modal</button>
+    <br>
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Array size</div>
+            <input oninput="rangeFunction_Sorted()" type="range"  class="myslider slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start_sorted()">Generate</button>
+        <div>
+            <button id="start" class="custom-btn btn-1 margin-right" onclick="TernarySearch()">Start</button>
+        </div>
+        <div class="rangeslider">
+            <div id="speed">Speed</div>
+            <input type="range" min="300" max="800" value="400" class="myslider slider" id="sliderRange">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
+function ternarySearch(l, r, key, ar)
+{
+    if (r >= l) {
+        let mid1 = l + parseInt((r - l) / 3, 10);
+        let mid2 = r - parseInt((r - l) / 3, 10);
+        if (ar[mid1] == key) {
+            return mid1;
+        }
+        if (ar[mid2] == key) {
+            return mid2;
+        }
+        if (key < ar[mid1]) {
+            return ternarySearch(l, mid1 - 1, key, ar);
+        }
+        else if (key > ar[mid2]) {
+            return ternarySearch(mid2 + 1, r, key, ar);
+        }
+        else {
+            return ternarySearch(mid1 + 1, mid2 - 1, key, ar);
+        }
+    }
+    return -1;
+}
+        </div>
+            
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
+def ternarySearch(l, r, key, ar):
+    if (r >= l):
+        mid1 = l + (r - l) //3
+        mid2 = r - (r - l) //3
+        if (ar[mid1] == key):
+            return mid1           
+        if (ar[mid2] == key):
+            return mid2
+        if (key < ar[mid1]):
+            return ternarySearch(l, mid1 - 1, key, ar) 
+        elif (key > ar[mid2]):
+            return ternarySearch(mid2 + 1, r, key, ar)
+        else:
+            return ternarySearch(mid1 + 1, mid2 - 1, key, ar)
+    return -1
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
+static int ternarySearch(int l, int r, int key, int[] ar)
+{
+    if (r >= l) {
+        int mid1 = l + (r - l) / 3;
+        int mid2 = r - (r - l) / 3;
+        if (ar[mid1] == key) {
+            return mid1;
+        }
+        if (ar[mid2] == key) {
+            return mid2;
+        }
+        if (key < ar[mid1]) {
+            return ternarySearch(l, mid1 - 1, key, ar);
+        }
+        else if (key > ar[mid2]) {
+            return ternarySearch(mid2 + 1, r, key, ar);
+        }
+        else {
+            return ternarySearch(mid1 + 1, mid2 - 1, key, ar);
+        }
+    }
+    return -1;
+}
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt harum ipsum aliquid doloremque dicta, fugit facere vitae tempora cupiditate alias eos quisquam accusantium recusandae illo vel quod, adipisci facilis voluptatum!
+        </div>
+    </div>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <section class="c-container">
@@ -61,4 +161,5 @@
     </div>
 </body>
 <script src="../../script.js"></script>
+<script src="../../is_Pressed.js"></script>
 </html>

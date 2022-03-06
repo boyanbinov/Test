@@ -7,39 +7,118 @@
     <link rel="stylesheet" href="../../style.css" />
     <title>Document</title>
 </head>
-<body onload="start()">
-    <select name="forma" onchange="location = this.value;">
-        <option value="../../eg/searching_eg/binary_eg.html">English</option>
-        <option value="../../bg/searching_bg/binary_bg.html">Български</option>
-    </select>
+<body onload="start_sorted()">
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../../index_eg.html">Home</a></li>
+                    <li><a href="./binary_eg.html">Binary</a></li>
+                    <li><a href="./jump_eg.html">Jump</a></li>
+                    <li><a href="./linear_eg.html">Linear</a></li>
+                    <li><a href="./ternary_eg.html">Ternary</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../eg/searching_eg/binary_eg.html">English</option>
+                <option value="../../bg/searching_bg/binary_bg.html">Български</option>
+            </select>
+        </div>
+    </header>
     <br />
     <p class="header">Binary Search</p>
     <div id="array"></div>
     <br />
     <br />
-  
+
     <div id="count"></div>
     <br>
     <br>
-    <button id="generate" onclick="start()">Generate</button>
-    <div>
-        <input type="text" id="num_value" name="num_value" />
-        <button id="start" onclick="BinarySearch()">Start</button>
-    </div>
-    <div id="text"></div>
     <br>
-    <div id="array_size">Array size</div>
-    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
-    
     <br>
-    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
-    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
-    <div class="rangeslider">
-        <div id="speed">Speed</div>
-        <input type="range" min="200" max="800" value="400" class="myslider" id="sliderRange">
-    </div>
-    <button id="myBtn" onclick="toggle()">Open Modal</button>
+    <div class="flex-parent jc-center">
+        <!-- <div class="keepFormatted">Number to search </div>
+        <input type="text" id="num_value" name="num_value" /> -->
+        <form>
+            <div class="group">
+                <input type="text" id="num_value" name="num_value" autocomplete="off">
+                <label>Number to search</label>
+                <!-- onkeypress="is_Pressed()" -->
 
+                <!-- <div class="keepFormatted">Number to search </div> -->
+                <!-- <input type="text" id="num_value" name="num_value" /> -->
+            </div>  
+        </form>
+    </div>
+    <br>
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Array size</div>
+            <input oninput="rangeFunction_Sorted()" type="range"  class="slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start_sorted()">Generate</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="BinarySearch()">Start</button>
+        
+        <div class="rangeslider">
+            <div id="speed">Speed</div>
+            <input type="range" min="200" max="800" value="400" class="slider" id="sliderRange">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
+function binarySearch(arr, l, r, x){
+    if (r >= l) {
+        let mid = l + Math.floor((r - l) / 2);
+        if (arr[mid] == x)
+            return mid;
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    return -1;
+}
+        </div>
+            
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
+def binarySearch(arr, l, r, x):
+    if r >= l:
+        mid = l + (r - l) // 2
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] > x:
+            return binarySearch(arr, l, mid-1, x)
+        else:
+            return binarySearch(arr, mid + 1, r, x)
+    else:
+        return -1
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
+static int binarySearch(int[] arr, int l, int r, int x)
+{
+    if (r >= l) {
+        int mid = l + (r - l) / 2;
+        if (arr[mid] == x)
+            return mid;
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    return -1;
+}
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt harum ipsum aliquid doloremque dicta, fugit facere vitae tempora cupiditate alias eos quisquam accusantium recusandae illo vel quod, adipisci facilis voluptatum!
+        </div>
+    </div>
     <!-- The Modal -->
     <div id="myModal" class="modal">
         <!-- Modal content -->
@@ -61,4 +140,5 @@
     </div>
 </body>
 <script src="../../script.js"></script>
+<script src="../../is_Pressed.js"></script>
 </html>

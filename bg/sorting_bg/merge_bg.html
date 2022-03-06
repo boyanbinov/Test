@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css" />
+    <title>Document</title>
+</head>
+<body onload="start()" >
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../index_bg.html">Home</a></li>
+                    <li><a href="./bubble_bg.html">Bubble</a></li>
+                    <li><a href="./cocktail_bg.html">Cocktail</a></li>
+                    <li><a href="./counting_bg.html">Counting</a></li>
+                    <li><a href="./heap_bg.html">Heap</a></li>
+                    <li><a href="./insertion_bg.html">Insertion</a></li>
+                    <li><a href="./merge_bg.html">Merge</a></li>
+                    <li><a href="./quick_bg.html">Quick</a></li>
+                    <li><a href="./selection_bg.html">Selection</a></li>
+                    <li><a href="./shell_bg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../bg/sorting_bg/merge_bg.html">Български</option>
+                <option value="../../eg/sorting_eg/merge_eg.html">English</option>
+            </select>
+        </div>
+    </header>
+    <br />
+    <p class="header">Сортиране чрез сливане</p>
+    
+    <div id="array"></div>
+    <br />
+    <br />
+  
+    <div id="count"></div>
+    <br>
+    <br>
+    
+    <br>
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Размер на масива</div>
+            <input oninput="rangeFunction()" type="range"  class="slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start()">Генерирай</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="m()">Старт</button>
+        <div class="rangeslider">
+            <div id="speed">Скорост</div>
+            <input type="range" min="100" max="800" value="400" class="myslider slider" id="sliderRange">
+        </div>
+    </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
+function merge(arr, l, m, r)
+{
+    var n1 = m - l + 1;
+    var n2 = r - m;
+    
+    var L = new Array(n1); 
+    var R = new Array(n2);
+    
+    for (var i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (var j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+    var i = 0;
+    
+    var j = 0;
+    
+    var k = l;
+    
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+function mergeSort(arr,l, r){
+    if(l>=r){
+        return;
+    }
+    var m =l+ parseInt((r-l)/2);
+    mergeSort(arr,l,m);
+    mergeSort(arr,m+1,r);
+    merge(arr,l,m,r);
+}
+        </div>
+    
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
+def mergeSort(arr):
+    if len(arr) > 1:
+        mid = len(arr)//2
+
+        L = arr[:mid]
+        R = arr[mid:]
+
+        mergeSort(L)
+        mergeSort(R)
+
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+        </div>
+        
+        <div id="CodeC#" style="display:none;" id="CodeJS" class="keepFormatted flex-item-left">
+function merge(arr, l, m, r)
+{
+    var n1 = m - l + 1;
+    var n2 = r - m;
+    
+    var L = new Array(n1); 
+    var R = new Array(n2);
+    
+    for (var i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (var j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+    var i = 0;
+    
+    var j = 0;
+    
+    var k = l;
+    
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+function mergeSort(arr,l, r){
+    if(l>=r){
+        return;
+    }
+    var m =l+ parseInt((r-l)/2);
+    mergeSort(arr,l,m);
+    mergeSort(arr,m+1,r);
+    merge(arr,l,m,r);
+}
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. In nemo nisi similique iusto a, eos saepe est expedita voluptatum molestiae explicabo voluptatibus nesciunt soluta necessitatibus sint repellendus fugiat facilis possimus!
+        </div>
+    </div>
+</body>
+<script src="../../script.js"></script>
+</html>

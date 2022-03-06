@@ -7,11 +7,29 @@
     <link rel="stylesheet" href="../../style.css" />
     <title>Document</title>
 </head>
-<body onload="start()" >
-    <select name="forma" onchange="location = this.value;">
-        <option value="../../eg/sorting_eg/counting_eg.html">English</option>
-        <option value="../../bg/sorting_bg/counting_bg.html">Български</option>
-    </select>
+<body onload="start_counting()" >
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="../../index_eg.html">Home</a></li>
+                    <li><a href="./bubble_eg.html">Bubble</a></li>
+                    <li><a href="./cocktail_eg.html">Cocktail</a></li>
+                    <li><a href="./counting_eg.html">Counting</a></li>
+                    <li><a href="./heap_eg.html">Heap</a></li>
+                    <li><a href="./insertion_eg.html">Insertion</a></li>
+                    <li><a href="./merge_eg.html">Merge</a></li>
+                    <li><a href="./quick_eg.html">Quick</a></li>
+                    <li><a href="./selection_eg.html">Selection</a></li>
+                    <li><a href="./shell_eg.html">Shell</a></li>
+                </ul>
+            </nav>
+            <select class="right" name="forma" onchange="location = this.value;">
+                <option value="../../eg/sorting_eg/counting_eg.html">English</option>
+                <option value="../../bg/sorting_bg/counting_bg.html">Български</option>
+            </select>
+        </div>
+    </header>
     <br />
     <p class="header">Counting Sort</p>
     
@@ -22,26 +40,28 @@
     <div id="count"></div>
     <br>
     <br>
-    <button id="generate" class="generate" onclick="start()">Generate</button>
-    <button id="start" onclick="CountingSort()">Start</button>
-
+    
     <br>
-    <div id="array_size">Array size</div>
-    <input oninput="rangeFunction()" type="range" id="range" value="25" min="10" max="50">
-
-    <br>
-    <input type="radio" name="JTP" id="normal" value="normal" onclick="colorMode()">Normal<br>   
-    <input type="radio" name="JTP" id="neon" value="neon" onclick="colorMode()">Neon<br>   
-    <div class="rangeslider">
-        <div id="speed">Speed</div>
-        <input type="range" min="200" max="800" value="400" class="myslider" id="sliderRange">
+    <div class="flex-parent jc-center">
+        <div class="margin-right">
+            <div id="array_size">Array size</div>
+            <input oninput="rangeFunction_Counting()" type="range"  class="myslider slider" id="range" value="15" min="10" max="50">
+        </div>
+        <button id="generate" class="custom-btn btn-1 margin-right" onclick="start_counting()">Generate</button>
+        <button id="start" class="custom-btn btn-1 margin-right" onclick="CountingSort()">Start</button>
+        <div class="rangeslider">
+            <div id="speed">Speed</div>
+            <input type="range" min="100" max="800" value="400" class="myslider slider" id="sliderRange">
+        </div>
     </div>
+    <br>
+    <br>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
+    <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
+    <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
 
-    <button id="JSbtnClick" onclick="js()">JS</button>
-    <button id="JSbtnClick" onclick="python()">Python</button>
-    <button id="C#btnClick" onclick="c()">C#</button>
-
-    <div id="CodeJS" class="keepFormatted">
+    <div class="flex-container">
+        <div id="CodeJS" class="keepFormatted flex-item-left">
 function countingSort(arr, min, max){
     let i = min,
             j = 0,
@@ -62,9 +82,9 @@ function countingSort(arr, min, max){
     }
     return arr;
 }
-    </div>
-
-    <div id="CodePy" style="display:none;" class="keepFormatted">
+        </div>
+    
+        <div id="CodePy" style="display:none;" class="keepFormatted flex-item-left">
 def count_sort(arr):
     max_element = int(max(arr))
     min_element = int(min(arr))
@@ -86,9 +106,9 @@ def count_sort(arr):
     for i in range(0, len(arr)):
         arr[i] = output_arr[i]
     return arr
-    </div>
-    
-    <div id="CodeC#" style="display:none;" class="keepFormatted">
+        </div>
+        
+        <div id="CodeC#" style="display:none;" class="keepFormatted flex-item-left">
 static void countSort(int[] arr)
 {
     int max = arr.Max();
@@ -111,6 +131,10 @@ static void countSort(int[] arr)
         arr[i] = output[i];
     }
 }
+        </div>
+        <div class="flex-item-right">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate nesciunt quas ex. Ipsum asperiores sunt expedita laboriosam omnis. Sit sapiente temporibus reprehenderit voluptate nam id ducimus numquam animi iste nostrum.
+        </div>
     </div>
 </body>
 <script src="../../script.js"></script>
