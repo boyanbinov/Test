@@ -34,24 +34,6 @@ body{
 }
 
 
-@media screen and (max-width: 600px) {
-	.block {
-		width: 17px;
-		background-color: #add8e6;
-		position: absolute;
-		bottom: 0px;
-		transition: 0.2s all ease;	
-	}
-
-	.block_count {
-		position: absolute;
-		color: black;
-		margin-top: 1px;
-		margin-right: 1px;
-		width: 100%;
-		text-align: center;
-	}
-}
 
 .block_number {
 	position: absolute;
@@ -67,6 +49,20 @@ body{
 	position: absolute;
 	transition: 0.2s all ease;
 }
+@media screen and (max-width: 600px){
+	.block2 {
+		width: 17px;
+	}
+	
+	.block {
+		width: 17px;
+		background-color: #add8e6;
+		position: absolute;
+		bottom: 0px;
+		transition: 0.2s all ease;	
+	}
+}
+
 
 .block_indx {
 	position: absolute;

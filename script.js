@@ -88,7 +88,7 @@ function generatearraySorted() {
 
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
-		document.getElementById("range").max = "20";
+		document.getElementById("range").max = "19";
 		for (var i = 0; i < biggerScreenRange; i++) {
 			var value = arr[i];
 	
@@ -135,7 +135,7 @@ function generatearray() {
 	// for mobile
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
-		document.getElementById("range").max = "20";
+		document.getElementById("range").max = "19";
 		for (var i = 0; i < biggerScreenRange; i++) {
 			value = Math.ceil(Math.random() * 100);
 
@@ -184,14 +184,14 @@ function generatearray_counting() {
 	// for mobile
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
-		document.getElementById("range").max = "20";
+		document.getElementById("range").max = "19";
 		for (var i = 0; i < biggerScreenRange; i++) {
 			value = Math.ceil(Math.random() * biggerScreenRange);
 
 			var array_ele = document.createElement("div");
 			array_ele.classList.add("block");
 
-			array_ele.style.height = `${value * 20}px`;
+			array_ele.style.height = `${value * 9}px`;
 			array_ele.style.transform = `translate(${i * 20}px)`;
 			container.style.width = `${biggerScreenRange * 20}px`;
 
@@ -234,7 +234,7 @@ function generate_freq() {
 	let width = window.innerWidth;
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
-		document.getElementById("range").max = "20";
+		document.getElementById("range").max = "19";
 
 		for (var i = 0; i < biggerScreenRange; i++) {
 			var array_ele2 = document.createElement("div");
@@ -288,7 +288,7 @@ function generate_indx() {
 	let width = window.innerWidth;
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
-		document.getElementById("range").max = "20";
+		document.getElementById("range").max = "19";
 
 		for (var i = 0; i < biggerScreenRange; i++) {
 			var array_ele2 = document.createElement("div");
@@ -603,7 +603,7 @@ async function CountingSort() {
 		var block_label = document.getElementsByClassName("block_number");
 		
 		for (var j = 0; j < temp; j++) {
-			blocks[idx].style.height = `${(i + 1) * 8}px`;
+			blocks[idx].style.height = `${(i + 1) * 9}px`;
 			block_label[idx].innerText = i + 1;
 			blocks[idx].style.backgroundColor = "#0bdb67";
 			idx++;
