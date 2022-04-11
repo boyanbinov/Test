@@ -74,11 +74,11 @@ function sliderSpeed() {
 
 function generatearraySorted() {
 	Clear("array");
-	var biggerScreenRange = document.getElementById("range").value;
+	var arrSize = document.getElementById("range").value;
 	let width = window.innerWidth;
 	var arr = [];
 
-	for (var i = 0; i < biggerScreenRange; i++) {
+	for (var i = 0; i < arrSize; i++) {
 		var val = Number(Math.ceil(Math.random() * 100));
 		arr.push(val);
 	}
@@ -89,14 +89,14 @@ function generatearraySorted() {
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
 		document.getElementById("range").max = "19";
-		for (var i = 0; i < biggerScreenRange; i++) {
+		for (var i = 0; i < arrSize; i++) {
 			var value = arr[i];
 	
 			var array_ele = document.createElement("div");
 			array_ele.classList.add("block");
 			array_ele.style.height = `${value * 3}px`;
 			array_ele.style.transform = `translate(${i * 20}px)`;
-			container.style.width = `${biggerScreenRange * 20}px`; // tui kato edin bar e pochti 30px; pravim go za da izchislim width na class array (css)
+			container.style.width = `${arrSize * 20}px`; // tui kato edin bar e pochti 30px; pravim go za da izchislim width na class array (css)
 	
 			var array_ele_label = document.createElement("label");
 			array_ele_label.classList.add("block_number");
@@ -107,14 +107,14 @@ function generatearraySorted() {
 		}
 	}
 	else{
-		for (var i = 0; i < biggerScreenRange; i++) {
+		for (var i = 0; i < arrSize; i++) {
 			var value = arr[i];
 	
 			var array_ele = document.createElement("div");
 			array_ele.classList.add("block");
 			array_ele.style.height = `${value * 3}px`;
 			array_ele.style.transform = `translate(${i * 30}px)`;
-			container.style.width = `${biggerScreenRange * 30}px`;
+			container.style.width = `${arrSize * 30}px`;
 	
 			var array_ele_label = document.createElement("label");
 			array_ele_label.classList.add("block_number");
@@ -128,7 +128,7 @@ function generatearraySorted() {
 
 function generatearray() {
 	Clear("array");
-	var biggerScreenRange = document.getElementById("range").value;
+	var arrSize = document.getElementById("range").value;
 	let width = window.innerWidth;
 	console.log(width);
 
@@ -136,7 +136,7 @@ function generatearray() {
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
 		document.getElementById("range").max = "19";
-		for (var i = 0; i < biggerScreenRange; i++) {
+		for (var i = 0; i < arrSize; i++) {
 			value = Math.ceil(Math.random() * 100);
 
 			var array_ele = document.createElement("div");
@@ -144,7 +144,7 @@ function generatearray() {
 
 			array_ele.style.height = `${value * 3}px`;
 			array_ele.style.transform = `translate(${i * 20}px)`;
-			container.style.width = `${biggerScreenRange * 20}px`;
+			container.style.width = `${arrSize * 20}px`;
 
 			var array_ele_label = document.createElement("label");
 			array_ele_label.classList.add("block_number");
@@ -156,14 +156,15 @@ function generatearray() {
 	}
 	//pc
 	else {
-		for (var i = 0; i < biggerScreenRange; i++) {
+		for (var i = 0; i < arrSize; i++) {
 			var value = Math.ceil(Math.random() * 100);
 
 			var array_ele = document.createElement("div");
 			array_ele.classList.add("block");
+
 			array_ele.style.height = `${value * 2.5}px`;
 			array_ele.style.transform = `translate(${i * 30}px)`;
-			container.style.width = `${biggerScreenRange * 30}px`;
+			container.style.width = `${arrSize * 30}px`;
 		
 			var array_ele_label = document.createElement("label");
 			array_ele_label.classList.add("block_number");
@@ -177,7 +178,7 @@ function generatearray() {
 
 function generatearray_counting() {
 	Clear("array");
-	var biggerScreenRange = document.getElementById("range").value;
+	var arrSize = document.getElementById("range").value;
 	let width = window.innerWidth;
 	console.log(width);
 
@@ -185,15 +186,15 @@ function generatearray_counting() {
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
 		document.getElementById("range").max = "19";
-		for (var i = 0; i < biggerScreenRange; i++) {
-			value = Math.ceil(Math.random() * biggerScreenRange);
+		for (var i = 0; i < arrSize; i++) {
+			value = Math.ceil(Math.random() * arrSize);
 
 			var array_ele = document.createElement("div");
 			array_ele.classList.add("block");
 
 			array_ele.style.height = `${value * 9}px`;
 			array_ele.style.transform = `translate(${i * 20}px)`;
-			container.style.width = `${biggerScreenRange * 20}px`;
+			container.style.width = `${arrSize * 20}px`;
 
 			var array_ele_label = document.createElement("label");
 			array_ele_label.classList.add("block_number");
@@ -206,14 +207,14 @@ function generatearray_counting() {
 	}
 	//pc
 	else {
-		for (var i = 0; i < biggerScreenRange; i++) {
-			var value = Math.ceil(Math.random() * biggerScreenRange);
+		for (var i = 0; i < arrSize; i++) {
+			var value = Math.ceil(Math.random() * arrSize);
 
 			var array_ele = document.createElement("div");
 			array_ele.classList.add("block");
 			array_ele.style.height = `${value * 9}px`;
 			array_ele.style.transform = `translate(${i * 30}px)`;
-			container.style.width = `${biggerScreenRange * 30}px`;
+			container.style.width = `${arrSize * 30}px`;
 			
 			var array_ele_label = document.createElement("label");
 			array_ele_label.classList.add("block_number");
@@ -230,19 +231,19 @@ var count_container = document.getElementById("count");
 function generate_freq() {
 	Clear("count");
 	document.getElementsByClassName("block_count").innerHTML = "";
-	var biggerScreenRange = document.getElementById("range").value;
+	var arrSize = document.getElementById("range").value;
 	let width = window.innerWidth;
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
 		document.getElementById("range").max = "19";
 
-		for (var i = 0; i < biggerScreenRange; i++) {
+		for (var i = 0; i < arrSize; i++) {
 			var array_ele2 = document.createElement("div");
 	
 			array_ele2.classList.add("block2");
 			array_ele2.style.height = `${20}px`;
 			array_ele2.style.transform = `translate(${i * 20}px)`;
-			count_container.style.width = `${biggerScreenRange * 20}px`;
+			count_container.style.width = `${arrSize * 20}px`;
 	
 			var array_ele_idx = document.createElement("label");
 			array_ele_idx.classList.add("block_indx");
@@ -258,13 +259,13 @@ function generate_freq() {
 		}
 	}
 	else{
-		for (var i = 0; i < biggerScreenRange; i++) {
+		for (var i = 0; i < arrSize; i++) {
 			var array_ele2 = document.createElement("div");
 	
 			array_ele2.classList.add("block2");
 			array_ele2.style.height = `${20}px`;
 			array_ele2.style.transform = `translate(${i * 30}px)`;
-			count_container.style.width = `${biggerScreenRange * 30}px`;
+			count_container.style.width = `${arrSize * 30}px`;
 	
 			var array_ele_idx = document.createElement("label");
 			array_ele_idx.classList.add("block_indx");
@@ -284,19 +285,19 @@ function generate_freq() {
 function generate_indx() {
 	Clear("count");
 	document.getElementsByClassName("block_count").innerHTML = "";
-	var biggerScreenRange = document.getElementById("range").value;
+	var arrSize = document.getElementById("range").value;
 	let width = window.innerWidth;
 	if (width <= 600) {
 		document.getElementById("range").defaultValue = "15";
 		document.getElementById("range").max = "19";
 
-		for (var i = 0; i < biggerScreenRange; i++) {
+		for (var i = 0; i < arrSize; i++) {
 			var array_ele2 = document.createElement("div");
 	
 			array_ele2.classList.add("block2");
 			array_ele2.style.height = `${20}px`;
 			array_ele2.style.transform = `translate(${i * 20}px)`;
-			count_container.style.width = `${biggerScreenRange * 20}px`;
+			count_container.style.width = `${arrSize * 20}px`;
 			
 			var array_ele_label2 = document.createElement("label");
 			array_ele_label2.classList.add("block_count");
@@ -307,13 +308,13 @@ function generate_indx() {
 		}
 	}
 	else{
-		for (var i = 0; i < biggerScreenRange; i++) {
+		for (var i = 0; i < arrSize; i++) {
 			var array_ele2 = document.createElement("div");
 	
 			array_ele2.classList.add("block2");
 			array_ele2.style.height = `${20}px`;
 			array_ele2.style.transform = `translate(${i * 30}px)`;
-			count_container.style.width = `${biggerScreenRange * 30}px`;
+			count_container.style.width = `${arrSize * 30}px`;
 
 			var array_ele_label2 = document.createElement("label");
 			array_ele_label2.classList.add("block_count");
@@ -329,7 +330,18 @@ function Clear(elementID) {
 	document.getElementById(elementID).innerHTML = "";
 }
 
-function swap(el1, el2) {
+function swap(el1, el2){
+	var blocks = document.querySelectorAll(".block");
+	var temp1 = blocks[el1].style.height;
+	var temp2 = blocks[el1].childNodes[0].innerText;
+	
+	blocks[el1].style.height = blocks[el2].style.height;
+	blocks[el2].style.height = temp1;
+	blocks[el1].childNodes[0].innerText = blocks[el2].childNodes[0].innerText;
+	blocks[el2].childNodes[0].innerText = temp2;
+}
+
+function swap_bub(el1, el2) {
 	return new Promise((resolve) => {
 		var temp = el1.style.transform;
 		el1.style.transform = el2.style.transform;
@@ -362,14 +374,16 @@ async function BubbleSort() {
 			});
 			var value1 = Number(blocks[j].childNodes[0].innerHTML);
 			var value2 = Number(blocks[j + 1].childNodes[0].innerHTML);
+			// compare 2 blocks
 			if (value1 > value2) {
-				await swap(blocks[j], blocks[j + 1]);
+				await swap_bub(blocks[j], blocks[j + 1]);
 				blocks = document.querySelectorAll(".block");
 			}
-
+			// change color of previous blocks
 			blocks[j].style.backgroundColor = "#add8e6";
 			blocks[j + 1].style.backgroundColor = "#add8e6";
 		}
+		// adding color to sorted element
 		blocks[blocks.length - i - 1].style.backgroundColor = "#0bdb67";
 	}
 	enable_on_end();
@@ -378,14 +392,15 @@ async function BubbleSort() {
 async function InsertionSort() {
 	disable_on_start();
 
-	let bars = document.querySelectorAll(".block");
-	bars[0].style.backgroundColor = "#0bdb67";
-	for (var i = 1; i < bars.length; i += 1) {
+	let blocks = document.querySelectorAll(".block");
+	blocks[0].style.backgroundColor = "#0bdb67";
+	for (var i = 1; i < blocks.length; i += 1) {
 		var j = i - 1;
 
-		var key = parseInt(bars[i].childNodes[0].innerHTML);
-		var height = bars[i].style.height;
-		bars[i].style.backgroundColor = "darkblue";
+		var key = parseInt(blocks[i].childNodes[0].innerHTML);
+		// store i-th block height
+		var height = blocks[i].style.height;
+		blocks[i].style.backgroundColor = "darkblue";
 
 		await new Promise((resolve) => {
 			window.requestAnimationFrame(function () {
@@ -394,12 +409,12 @@ async function InsertionSort() {
 				}, sliderSpeed())
 			})
 		});
-
-		while (j >= 0 && parseInt(bars[j].childNodes[0].innerHTML) > key) {
-			bars[j].style.backgroundColor = "darkblue";
-
-			bars[j + 1].style.height = bars[j].style.height;
-			bars[j + 1].childNodes[0].innerText = bars[j].childNodes[0].innerText;
+		// place selected block to its correct position
+		while (j >= 0 && parseInt(blocks[j].childNodes[0].innerHTML) > key) {
+			blocks[j].style.backgroundColor = "darkblue";
+			// place j-th block over (j+1)th block
+			blocks[j + 1].style.height = blocks[j].style.height;
+			blocks[j + 1].childNodes[0].innerText = blocks[j].childNodes[0].innerText;
 
 			j = j - 1;
 			await new Promise((resolve) => {
@@ -411,12 +426,12 @@ async function InsertionSort() {
 			})
 
 			for (var k = i; k >= 0; k--) {
-				bars[k].style.backgroundColor = "#0bdb67";
+				blocks[k].style.backgroundColor = "#0bdb67";
 			}
 		}
-
-		bars[j + 1].style.height = height;
-		bars[j + 1].childNodes[0].innerHTML = key;
+		// Placing the selected element to its correct position
+		blocks[j + 1].style.height = height;
+		blocks[j + 1].childNodes[0].innerHTML = key;
 
 		await new Promise((resolve) => {
 			window.requestAnimationFrame(function () {
@@ -425,7 +440,7 @@ async function InsertionSort() {
 				}, sliderSpeed())
 			})
 		})
-		bars[i].style.backgroundColor = "#0bdb67";
+		blocks[i].style.backgroundColor = "#0bdb67";
 	}
 	enable_on_end();
 }
@@ -433,13 +448,13 @@ async function InsertionSort() {
 async function SelectionSort() {
 	disable_on_start();
 
-	let bars = document.querySelectorAll(".block");
+	let blocks = document.querySelectorAll(".block");
 	var min_idx = 0;
-	for (var i = 0; i < bars.length; i += 1) {
+	for (var i = 0; i < blocks.length; i += 1) {
 		min_idx = i;
-		bars[i].style.backgroundColor = "darkblue";
-		for (var j = i + 1; j < bars.length; j += 1) {
-			bars[j].style.backgroundColor = "yellow";
+		blocks[i].style.backgroundColor = "darkblue";
+		for (var j = i + 1; j < blocks.length; j += 1) {
+			blocks[j].style.backgroundColor = "yellow";
 			await new Promise((resolve) => {
 				window.requestAnimationFrame(function () {
 					setTimeout(() => {
@@ -447,27 +462,22 @@ async function SelectionSort() {
 					}, sliderSpeed())
 				})
 			})
-			var val1 = parseInt(bars[j].childNodes[0].innerHTML);
-			var val2 = parseInt(bars[min_idx].childNodes[0].innerHTML);
+			var val1 = parseInt(blocks[j].childNodes[0].innerHTML);
+			var val2 = parseInt(blocks[min_idx].childNodes[0].innerHTML);
 
 			if (val1 < val2) {
 				if (min_idx !== i) {
-					bars[min_idx].style.backgroundColor = "#add8e6";
+					blocks[min_idx].style.backgroundColor = "#add8e6";
 				}
 				min_idx = j;
 			}
 			else {
-				bars[j].style.backgroundColor = "#add8e6";
+				blocks[j].style.backgroundColor = "#add8e6";
 			}
 		}
 
 		// to swap
-		var temp1 = bars[min_idx].style.height;
-		var temp2 = bars[min_idx].childNodes[0].innerText;
-		bars[min_idx].style.height = bars[i].style.height;
-		bars[i].style.height = temp1;
-		bars[min_idx].childNodes[0].innerText = bars[i].childNodes[0].innerText;
-		bars[i].childNodes[0].innerText = temp2;
+		swap(min_idx, i);
 
 		await new Promise((resolve) => {
 			window.requestAnimationFrame(function () {
@@ -476,15 +486,13 @@ async function SelectionSort() {
 				}, sliderSpeed())
 			})
 		});
-		bars[min_idx].style.backgroundColor = "#add8e6";
-		bars[i].style.backgroundColor = "#0bdb67";
+		blocks[min_idx].style.backgroundColor = "#add8e6";
+		blocks[i].style.backgroundColor = "#0bdb67";
 	}
 	enable_on_end();
 }
 
-
 async function lometo_partition(l, r) {
-	var biggerScreenRange = document.getElementById("range").value;
 	var blocks = document.querySelectorAll(".block");
 
 	let pivot = Number(blocks[r].childNodes[0].innerHTML);
@@ -501,13 +509,7 @@ async function lometo_partition(l, r) {
 		var value = Number(blocks[j].childNodes[0].innerHTML);
 		if (value < pivot) {
 			i++;
-			var temp1 = blocks[i].style.height;
-			var temp2 = blocks[i].childNodes[0].innerText;
-			
-			blocks[i].style.height = blocks[j].style.height;
-			blocks[j].style.height = temp1;
-			blocks[i].childNodes[0].innerText = blocks[j].childNodes[0].innerText;
-			blocks[j].childNodes[0].innerText = temp2;
+			swap(i, j);
 			blocks[i].style.backgroundColor = "orange";
 			if (i != j) blocks[j].style.backgroundColor = "pink";
 			await new Promise((resolve) =>
@@ -518,20 +520,13 @@ async function lometo_partition(l, r) {
 		else blocks[j].style.backgroundColor = "pink";
 	}
 	i++;
-	var temp1 = blocks[i].style.height;
-	var temp2 = blocks[i].childNodes[0].innerText;
-	blocks[i].style.height = blocks[r].style.height;
-	blocks[r].style.height = temp1;
-	blocks[i].childNodes[0].innerText = blocks[r].childNodes[0].innerText;
-	blocks[r].childNodes[0].innerText = temp2;
-	blocks[r].style.backgroundColor = "pink";
-	blocks[i].style.backgroundColor = "green";
+	swap(i, r);
 
 	await new Promise((resolve) =>
 		setTimeout(() => {
 			resolve();
 		}, sliderSpeed() * 3));
-	for (var k = 0; k < biggerScreenRange; k++)
+	for (var k = 0; k < blocks.length; k++)
 		blocks[k].style.backgroundColor = "#add8e6";
 	return i;
 }
@@ -703,18 +698,12 @@ async function CocktailSort() {
 			blocks[i].style.backgroundColor = "red";
 			blocks[i + 1].style.backgroundColor = "red";
 			if (value1 > value2) {
-				var temp1 = blocks[i].style.height;
-				var temp2 = blocks[i].childNodes[0].innerText;
-				
 				await new Promise((resolve) =>
 				setTimeout(() => {
 					resolve();
 				}, sliderSpeed()));
 				
-				blocks[i].style.height = blocks[i + 1].style.height;
-				blocks[i].childNodes[0].innerText = blocks[i + 1].childNodes[0].innerText;
-				blocks[i + 1].style.height = temp1;
-				blocks[i + 1].childNodes[0].innerText = temp2;
+				swap(i, i + 1);
 				swapped = true;
 			}	
 
@@ -741,18 +730,12 @@ async function CocktailSort() {
 			blocks[i + 1].style.backgroundColor = "red";
 
 			if (value1 > value2) {
-				var temp1 = blocks[i].style.height;
-				var temp2 = blocks[i].childNodes[0].innerText;
-
 				await new Promise((resolve) =>
 				setTimeout(() => {
 					resolve();
 				}, sliderSpeed()));
 
-				blocks[i].style.height = blocks[i + 1].style.height;
-				blocks[i].childNodes[0].innerText = blocks[i + 1].childNodes[0].innerText;
-				blocks[i + 1].style.height = temp1;
-				blocks[i + 1].childNodes[0].innerText = temp2;
+				swap(i, i + 1);
 
 				swapped = true;
 			}
@@ -787,13 +770,7 @@ async function Heapify(n, i) {
     largest = r;
 
 	if (largest != i) {
-		var temp1 = blocks[i].style.height;
-		var temp2 = blocks[i].childNodes[0].innerText;
-		blocks[i].style.height = blocks[largest].style.height;
-		blocks[largest].style.height = temp1;
-		blocks[i].childNodes[0].innerText =
-		blocks[largest].childNodes[0].innerText;
-		blocks[largest].childNodes[0].innerText = temp2;
+		swap(i, largest);
 
 		await new Promise((resolve) =>
 			setTimeout(() => {
@@ -812,13 +789,7 @@ async function HeapSort() {
 	}
 
 	for (var i = blocks.length - 1; i > 0; i--) {
-		var temp1 = blocks[i].style.height;
-		var temp2 = blocks[i].childNodes[0].innerText;
-		blocks[i].style.height = blocks[0].style.height;
-		blocks[0].style.height = temp1;
-		blocks[i].childNodes[0].innerText = 
-		blocks[0].childNodes[0].innerText;
-		blocks[0].childNodes[0].innerText = temp2;
+		swap(i, 0);
 
 		await new Promise((resolve) =>
 			setTimeout(() => {
@@ -1005,21 +976,17 @@ async function JumpSearch() {
 	disable_on_start();
 	
 	var blocks = document.querySelectorAll(".block");
-	var arr = []
-	var blocks = document.querySelectorAll(".block");
-	
-	for (let i = 0; i < blocks.length; i++) {
-		arr.push(Number(blocks[i].childNodes[0].innerHTML))
-	}
-	let step = Math.round(Math.sqrt(arr.length));
+	let step = Math.round(Math.sqrt(blocks.length));
 	var flag = 0;
 
 	for (let i = 0; i < blocks.length; i++) {
 		blocks[i].style.backgroundColor = '#add8e6';
 	}
 
-	var i = 0
+	var i = 0;
 	for (i = step; Math.min(step + i, blocks.length)-1 <= blocks.length; i+=step) {
+		// to stop loop exceeding array size
+		// start linear search if at end of array
 		if(i >= blocks.length){
 			i = blocks.length;
 			for (var k = i - 1; k <= blocks.length; k--) {
@@ -1040,14 +1007,16 @@ async function JumpSearch() {
 				else {
 					blocks[k].style.backgroundColor = "#add8e6";
 				}
+				// if element is not present
 				if (k == 0 && flag == 0) {
 					break;
 				}
 			}
+			// to break if element is found
 			break;
 		}
+
 		blocks[i].style.backgroundColor = "wheat";
-		
 		await new Promise((resolve) =>
 		setTimeout(() => {
 			resolve();
@@ -1056,6 +1025,7 @@ async function JumpSearch() {
 		var value = Number(blocks[i].childNodes[0].innerHTML);
 		var j = i;
 		if (value > num) {
+			// linear search if value is bigger than searched
 			for (j = i; j < blocks.length; j--) {
 				blocks[j].style.backgroundColor = "wheat";
 				
@@ -1067,15 +1037,14 @@ async function JumpSearch() {
 				
 				if (value == num) {
 					flag = 1;
-	
 					blocks[j].style.backgroundColor = "#0bdb67";
 					break;
 				} 
 				else {
 					blocks[j].style.backgroundColor = "#add8e6";
 				}
+				// if element is not present
 				if (j == 0 && flag == 0) {
-					
 					break;
 				}
 			}
@@ -1089,6 +1058,7 @@ async function JumpSearch() {
 			blocks[j].style.backgroundColor = "#0bdb67";//vajno
 			break;
 		} 
+		// if element is not present
 		if (j == 0 && flag == 0) {
 			break;
 		}
