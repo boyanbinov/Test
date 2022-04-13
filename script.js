@@ -376,9 +376,16 @@ async function BubbleSort() {
 			var value2 = Number(blocks[j + 1].childNodes[0].innerHTML);
 			// compare 2 blocks
 			if (value1 > value2) {
-				await swap_bub(blocks[j], blocks[j + 1]);
+				await swap(j, j + 1);
 				blocks = document.querySelectorAll(".block");
 			}
+			await new Promise((resolve) => {
+				window.requestAnimationFrame(function () {
+					setTimeout(() => {
+						resolve();
+					}, sliderSpeed())
+				})
+			});
 			// change color of previous blocks
 			blocks[j].style.backgroundColor = "#add8e6";
 			blocks[j + 1].style.backgroundColor = "#add8e6";
@@ -497,6 +504,7 @@ async function lometo_partition(l, r) {
 
 	let pivot = Number(blocks[r].childNodes[0].innerHTML);
 	console.log(pivot)
+	// pointer for greater element
 	var i = l - 1;
 	blocks[r].style.backgroundColor = "red";
 
@@ -508,7 +516,10 @@ async function lometo_partition(l, r) {
 			}, sliderSpeed()));
 		var value = Number(blocks[j].childNodes[0].innerHTML);
 		if (value < pivot) {
+			// if element smaller than pivot is found
+      		// swap it with the greater element pointed by i
 			i++;
+			// swapping element at i with element at j
 			swap(i, j);
 			blocks[i].style.backgroundColor = "orange";
 			if (i != j) blocks[j].style.backgroundColor = "pink";
@@ -520,6 +531,7 @@ async function lometo_partition(l, r) {
 		else blocks[j].style.backgroundColor = "pink";
 	}
 	i++;
+	// swap the pivot element with the greater element specified by i
 	swap(i, r);
 
 	await new Promise((resolve) =>
@@ -617,7 +629,7 @@ async function CountingSort() {
 
 async function mergeSort(array, start, end) {
 	if (start < end) {
-		let childs = document.querySelectorAll(".block");
+		let blocks = document.querySelectorAll(".block");
 		let mid = Math.floor((start + end) / 2);
 		await mergeSort(array, start, mid);
 		await mergeSort(array, mid + 1, end);
@@ -626,8 +638,8 @@ async function mergeSort(array, start, end) {
 			setTimeout(() => {
 				resolve();
 			}, sliderSpeed()));
-		childs[start].style.backgroundColor = "#add8e6";
-		childs[end].style.backgroundColor = "#add8e6";
+		blocks[start].style.backgroundColor = "#add8e6";
+		blocks[end].style.backgroundColor = "#add8e6";
 	}
 	enable_on_end();
 }
@@ -637,9 +649,11 @@ async function merge(array, start, mid, end) {
 	let p = start;
 	let q = mid + 1;
 	let arr = [];
-	let childs = document.querySelectorAll(".block");
-	childs[start].style.backgroundColor = "yellow";
-	childs[end].style.backgroundColor = "green";
+	let blocks = document.querySelectorAll(".block");
+	blocks[start].style.backgroundColor = "yellow";
+	blocks[end].style.backgroundColor = "green";
+	// Until we reach either end of either array[p] or array[q], pick larger among
+    // elements array[p] and array[q] and place them in the correct position
 	while (p <= mid && q <= end) {
 		if (array[p] <= array[q]) {
 			arr.push(array[p]);
@@ -650,7 +664,7 @@ async function merge(array, start, mid, end) {
 			q++;
 		}
 	}
-
+	// whhen we run out of elements in subarray pick up the remaining elements
 	while (p <= mid) {
 		arr.push(array[p]);
 		p++;
@@ -663,23 +677,23 @@ async function merge(array, start, mid, end) {
 	
 	let k = 0;
 	for (let i = start; i <= end; i++) {
-		array[i] = arr[k++];
-		childs[i].childNodes[0].innerText = array[i];
+		array[i] = arr[k];
+		blocks[i].childNodes[0].innerText = array[i];
+		k++;
 	}
 	
 	for (let i = start; i <= end; i++) {
-		childs[i].style.height = array[i] * 2.5 + "px";
+		blocks[i].style.height = array[i] * 2.5 + "px";
 	}
 }
 
 function m() {
 	var arr = [];
-	var size = document.getElementById("range").value;
 	var blocks = document.querySelectorAll(".block");
 	for (let i = 0; i < blocks.length; i++) {
 		arr.push(Number(blocks[i].childNodes[0].innerHTML));
 	}
-	mergeSort(arr, 0, size - 1);
+	mergeSort(arr, 0, blocks.length - 1);
 }
 
 async function CocktailSort() {
@@ -762,13 +776,13 @@ async function Heapify(n, i) {
 	var largest = i;
 	var l = 2 * i + 1; // left = 2*i + 1
 	var r = 2 * i + 2; // right = 2*i + 2
-
+	// if left child is larger than root
 	if (l < n && Number(blocks[l].childNodes[0].innerHTML) > Number(blocks[largest].childNodes[0].innerHTML))
     largest = l;
-
+	// if right child is larger than largest
 	if (r < n && Number(blocks[r].childNodes[0].innerHTML) > Number(blocks[largest].childNodes[0].innerHTML))
     largest = r;
-
+	// if largest is not root
 	if (largest != i) {
 		swap(i, largest);
 
@@ -777,17 +791,18 @@ async function Heapify(n, i) {
 			resolve();
 			}, sliderSpeed())
 		);
+		// recursively heapify the affected sub tree
 		await Heapify(n, largest);
 	}
 }
 
 async function HeapSort() {
 	var blocks = document.querySelectorAll(".block");
-
+	// build heap
 	for (var i = Math.floor(blocks.length / 2 - 1); i >= 0; i--) {
 		await Heapify(blocks.length, i);
 	}
-
+	// extract an element from heap
 	for (var i = blocks.length - 1; i > 0; i--) {
 		swap(i, 0);
 
@@ -795,6 +810,7 @@ async function HeapSort() {
 			setTimeout(() => {
 			resolve();
 			}, sliderSpeed()));
+		// call max heapify on the reduced heap
 		await Heapify(i, 0);
 	}
 
@@ -812,38 +828,33 @@ async function ShellSort() {
         await new Promise((resolve) =>
             setTimeout(() => {
                 resolve();
-            }, sliderSpeed())
-        );
-
+            }, sliderSpeed()));
         for (var j = i; j < blocks.length; j++) {
-            var temp = parseInt(blocks[j].childNodes[0].innerHTML);
             var k;
-
+            var temp = parseInt(blocks[j].childNodes[0].innerHTML);
             var temp1 = blocks[j].style.height;
             var temp2 = blocks[j].childNodes[0].innerText;
 
             for (k = j; k >= i && parseInt(blocks[k - i].childNodes[0].innerHTML) > temp; k -= i) {
-                blocks[k].style.height = blocks[k - i].style.height;
-                blocks[k].childNodes[0].innerText = blocks[k - i].childNodes[0].innerText;
-                await new Promise((resolve) =>
-                    setTimeout(() => {
-                        resolve();
-                    }, sliderSpeed()));
+                swap(k, k-i);
+				blocks[k - i].style.backgroundColor = "orange";
             }
-
+			
             blocks[j].style.backgroundColor = "orange";
             blocks[k].style.backgroundColor = "orange";
+			
             blocks[k].style.height = temp1;
             blocks[k].childNodes[0].innerText = temp2;
-
+			
             await new Promise((resolve) =>
                 setTimeout(() => {
                     resolve();
                 }, sliderSpeed()));
 
-            blocks[j].style.backgroundColor = "#add8e6";
-            blocks[k].style.backgroundColor = "#add8e6";
-
+			for (let z = 0; z < blocks.length; z++) {
+				blocks[z].style.backgroundColor = "#add8e6";
+			}
+            
             await new Promise((resolve) =>
                 setTimeout(() => {
                     resolve();
