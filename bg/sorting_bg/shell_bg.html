@@ -12,16 +12,16 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a href="../index_bg.html">Home</a></li>
-                    <li><a href="./bubble_bg.html">Bubble</a></li>
-                    <li><a href="./cocktail_bg.html">Cocktail</a></li>
-                    <li><a href="./counting_bg.html">Counting</a></li>
-                    <li><a href="./heap_bg.html">Heap</a></li>
-                    <li><a href="./insertion_bg.html">Insertion</a></li>
-                    <li><a href="./merge_bg.html">Merge</a></li>
-                    <li><a href="./quick_bg.html">Quick</a></li>
-                    <li><a href="./selection_bg.html">Selection</a></li>
-                    <li><a href="./shell_bg.html">Shell</a></li>
+                    <li><a href="../index_bg.html">Начало</a></li>
+                    <li><a href="./bubble_bg.html">Мехурче</a></li>
+                    <li><a href="./cocktail_bg.html">Клатене</a></li>
+                    <li><a href="./counting_bg.html">Броене</a></li>
+                    <li><a href="./heap_bg.html">Пирамидално</a></li>
+                    <li><a href="./insertion_bg.html">Вмъкване</a></li>
+                    <li><a href="./merge_bg.html">Сливане</a></li>
+                    <li><a href="./quick_bg.html">Бързо</a></li>
+                    <li><a href="./selection_bg.html">Селекция</a></li>
+                    <li><a href="./shell_bg.html">Шел</a></li>
                 </ul>
             </nav>
             <select class="right" name="forma" onchange="location = this.value;">
@@ -31,7 +31,7 @@
         </div>
     </header>
     <br />
-    <p class="header">Shell Sort</p>
+    <p class="header">Сортиране на Шел</p>
     
     <div id="array"></div>
     <br />
@@ -59,6 +59,7 @@
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
     <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+    <button id="C++btnClick" class="custom-btn btn-1" onclick="cPlus()">C++</button>
 
     <div class="flex-container">
         <div id="CodeJS" class="keepFormatted flex-item-left">
@@ -117,7 +118,25 @@ public int shell_sort(int []arr)
     return 0;
 }
         </div>
-
+        <div id="CodeC++" style="display:none;" class="keepFormatted flex-item-left">
+int shellSort(int arr[], int n)
+{
+    for (int gap = n/2; gap > 0; gap /= 2)
+    {
+        for (int i = gap; i < n; i += 1)
+        {
+            int temp = arr[i];
+            int j;           
+            for (j = i; j >= gap &&
+             arr[j - gap] > temp; j -= gap)
+                arr[j] = arr[j - gap];
+                
+            arr[j] = temp;
+        }
+    }
+    return 0;
+}
+        </div>
         <div class="flex-item-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, voluptatem. Autem nobis inventore tempora, voluptatum accusamus quam molestiae delectus similique quasi facilis natus eaque. Magni accusamus rerum est deleniti ad!</div>
     </div>
     <!-- <script>

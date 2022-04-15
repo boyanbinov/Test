@@ -12,11 +12,11 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a href="../index_bg.html">Home</a></li>
-                    <li><a href="./binary_bg.html">Binary</a></li>
-                    <li><a href="./jump_bg.html">Jump</a></li>
-                    <li><a href="./linear_bg.html">Linear</a></li>
-                    <li><a href="./ternary_bg.html">Ternary</a></li>
+                    <li><a href="../index_bg.html">Начало</a></li>
+                    <li><a href="./binary_bg.html">Двоично</a></li>
+                    <li><a href="./jump_bg.html">Скоци</a></li>
+                    <li><a href="./linear_bg.html">Линейно</a></li>
+                    <li><a href="./ternary_bg.html">Тристранно</a></li>
                 </ul>
             </nav>
             <select class="right" name="forma" onchange="location = this.value;">
@@ -26,7 +26,7 @@
         </div>
     </header>
     <br />
-    <p class="header">Linear Search</p>
+    <p class="header">Линейно търсене</p>
     <div id="array"></div>
     <br />
     <br />
@@ -66,6 +66,8 @@
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
     <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+    <button id="C++btnClick" class="custom-btn btn-1" onclick="cPlus()">C++</button>
+
     <div class="flex-container">
         <div id="CodeJS" class="keepFormatted flex-item-left">
 function search(arr, n, x)
@@ -99,25 +101,32 @@ public static int search(int[] arr, int x)
     return -1;
 }
         </div>
+        <div id="CodeC++" style="display:none;" class="keepFormatted flex-item-left">
+int search(int arr[], int n, int x)
+{
+    int i;
+    for (i = 0; i < n; i++)
+        if (arr[i] == x)
+            return i;
+    return -1;
+}
+        </div>
         <div class="flex-item-right">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt harum ipsum aliquid doloremque dicta, fugit facere vitae tempora cupiditate alias eos quisquam accusantium recusandae illo vel quod, adipisci facilis voluptatum!
         </div>
     </div>
-
-    <!-- The Modal -->
     <div id="myModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <section class="c-container">
                 <div id="container-success" style="display: none">
                     <div class="o-circle c-container__circle o-circle__sign--success">
-                        <div class="o-circle__sign"></div>
+                        <div class="check-mark-sign">&#10004</div>
                     </div>
                 </div>
                 <div id="container-fail" style="display: none">
                     <div class="o-circle c-container__circle o-circle__sign--failure">
-                        <div class="o-circle__sign"></div>
+                        <div class="x-sign">&times;</div>
                     </div>
                 </div>
             </section>

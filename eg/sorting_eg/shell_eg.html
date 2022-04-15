@@ -59,6 +59,7 @@
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
     <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+    <button id="C++btnClick" class="custom-btn btn-1" onclick="cPlus()">C++</button>
 
     <div class="flex-container">
         <div id="CodeJS" class="keepFormatted flex-item-left">
@@ -117,7 +118,25 @@ public int shell_sort(int []arr)
     return 0;
 }
         </div>
-
+        <div id="CodeC++" style="display:none;" class="keepFormatted flex-item-left">
+int shellSort(int arr[], int n)
+{
+    for (int gap = n/2; gap > 0; gap /= 2)
+    {
+        for (int i = gap; i < n; i += 1)
+        {
+            int temp = arr[i];
+            int j;           
+            for (j = i; j >= gap && 
+            arr[j - gap] > temp; j -= gap)
+                arr[j] = arr[j - gap];
+                
+            arr[j] = temp;
+        }
+    }
+    return 0;
+}
+        </div>
         <div class="flex-item-right">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, voluptatem. Autem nobis inventore tempora, voluptatum accusamus quam molestiae delectus similique quasi facilis natus eaque. Magni accusamus rerum est deleniti ad!</div>
     </div>
     <!-- <script>

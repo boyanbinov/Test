@@ -12,16 +12,16 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a href="../index_bg.html">Home</a></li>
-                    <li><a href="./bubble_bg.html">Bubble</a></li>
-                    <li><a href="./cocktail_bg.html">Cocktail</a></li>
-                    <li><a href="./counting_bg.html">Counting</a></li>
-                    <li><a href="./heap_bg.html">Heap</a></li>
-                    <li><a href="./insertion_bg.html">Insertion</a></li>
-                    <li><a href="./merge_bg.html">Merge</a></li>
-                    <li><a href="./quick_bg.html">Quick</a></li>
-                    <li><a href="./selection_bg.html">Selection</a></li>
-                    <li><a href="./shell_bg.html">Shell</a></li>
+                    <li><a href="../index_bg.html">Начало</a></li>
+                    <li><a href="./bubble_bg.html">Мехурче</a></li>
+                    <li><a href="./cocktail_bg.html">Клатене</a></li>
+                    <li><a href="./counting_bg.html">Броене</a></li>
+                    <li><a href="./heap_bg.html">Пирамидално</a></li>
+                    <li><a href="./insertion_bg.html">Вмъкване</a></li>
+                    <li><a href="./merge_bg.html">Сливане</a></li>
+                    <li><a href="./quick_bg.html">Бързо</a></li>
+                    <li><a href="./selection_bg.html">Селекция</a></li>
+                    <li><a href="./shell_bg.html">Шел</a></li>
                 </ul>
             </nav>
             <select class="right" name="forma" onchange="location = this.value;">
@@ -59,6 +59,7 @@
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
     <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+    <button id="C++btnClick" class="custom-btn btn-1" onclick="cPlus()">C++</button>
 
     <div class="flex-container">
         <div id="CodeJS" class="keepFormatted flex-item-left">
@@ -159,6 +160,41 @@ private static int Partition(int[] arr, int left, int right)
         {
             return right;
         }
+    }
+}
+        </div>
+        <div id="CodeC++" style="display:none;" class="keepFormatted flex-item-left">
+void swap(int* a, int* b)
+{
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+int partition (int arr[], int low, int high)
+{
+    int pivot = arr[high];
+    int i = (low - 1);
+    
+    for (int j = low; j <= high - 1; j++)
+    {
+        if (arr[j] < pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high)
+{
+    if (low < high)
+    {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
     }
 }
         </div>

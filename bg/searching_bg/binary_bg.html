@@ -12,11 +12,11 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li><a href="../index_bg.html">Home</a></li>
-                    <li><a href="./binary_bg.html">Binary</a></li>
-                    <li><a href="./jump_bg.html">Jump</a></li>
-                    <li><a href="./linear_bg.html">Linear</a></li>
-                    <li><a href="./ternary_bg.html">Ternary</a></li>
+                    <li><a href="../index_bg.html">Начало</a></li>
+                    <li><a href="./binary_bg.html">Двоично</a></li>
+                    <li><a href="./jump_bg.html">Скоци</a></li>
+                    <li><a href="./linear_bg.html">Линейно</a></li>
+                    <li><a href="./ternary_bg.html">Тристранно</a></li>
                 </ul>
             </nav>
             <select class="right" name="forma" onchange="location = this.value;">
@@ -26,7 +26,7 @@
         </div>
     </header>
     <br />
-    <p class="header">Бинарно търсене</p>
+    <p class="header">Двоично търсене</p>
     <div id="array"></div>
     <br />
     <br />
@@ -37,16 +37,10 @@
     <br>
     <br>
     <div class="flex-parent jc-center">
-        <!-- <div class="keepFormatted">Number to search </div>
-        <input type="text" id="num_value" name="num_value" /> -->
         <form>
             <div class="group">
                 <input type="text" id="num_value" name="num_value" autocomplete="off">
                 <label>Търсено число</label>
-                <!-- onkeypress="is_Pressed()" -->
-
-                <!-- <div class="keepFormatted">Number to search </div> -->
-                <!-- <input type="text" id="num_value" name="num_value" /> -->
             </div>  
         </form>
     </div>
@@ -71,6 +65,7 @@
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
     <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+    <button id="C++btnClick" class="custom-btn btn-1" onclick="cPlus()">C++</button>
 
     <div class="flex-container">
         <div id="CodeJS" class="keepFormatted flex-item-left">
@@ -115,24 +110,39 @@ static int binarySearch(int[] arr, int l, int r, int x)
     return -1;
 }
         </div>
+        <div id="CodeC++" style="display:none;" class="keepFormatted flex-item-left">
+int binarySearch(int arr[], int l, int r, int x)
+{
+    if (r >= l) {
+        int mid = l + (r - l) / 2;
+    
+        if (arr[mid] == x)
+            return mid;
+    
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+    
+        return binarySearch(arr, mid + 1, r, x);
+    }
+    return -1;
+}
+        </div>
         <div class="flex-item-right">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt harum ipsum aliquid doloremque dicta, fugit facere vitae tempora cupiditate alias eos quisquam accusantium recusandae illo vel quod, adipisci facilis voluptatum!
         </div>
     </div>
-    <!-- The Modal -->
     <div id="myModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <section class="c-container">
                 <div id="container-success" style="display: none">
                     <div class="o-circle c-container__circle o-circle__sign--success">
-                        <div class="o-circle__sign"></div>
+                        <div class="check-mark-sign">&#10004</div>
                     </div>
                 </div>
                 <div id="container-fail" style="display: none">
                     <div class="o-circle c-container__circle o-circle__sign--failure">
-                        <div class="o-circle__sign"></div>
+                        <div class="x-sign">&times;</div>
                     </div>
                 </div>
             </section>

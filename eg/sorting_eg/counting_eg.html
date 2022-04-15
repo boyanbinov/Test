@@ -59,6 +59,7 @@
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="js()">JS</button>
     <button id="JSbtnClick" class="custom-btn btn-1" onclick="python()">Python</button>
     <button id="C#btnClick" class="custom-btn btn-1" onclick="c()">C#</button>
+    <button id="C++btnClick" class="custom-btn btn-1" onclick="cPlus()">C++</button>
 
     <div class="flex-container">
         <div id="CodeJS" class="keepFormatted flex-item-left">
@@ -130,6 +131,29 @@ static void countSort(int[] arr)
     for (int i = 0; i < arr.Length; i++) {
         arr[i] = output[i];
     }
+}
+        </div>
+        <div id="CodeC++" style="display:none;" class="keepFormatted flex-item-left">
+void countSort(vector<int>& arr)
+{
+    int max = *max_element(arr.begin(), arr.end());
+    int min = *min_element(arr.begin(), arr.end());
+    int range = max - min + 1;
+    
+    vector<int> count(range), output(arr.size());
+    for (int i = 0; i < arr.size(); i++)
+        count[arr[i] - min]++;
+    
+    for (int i = 1; i < count.size(); i++)
+        count[i] += count[i - 1];
+    
+    for (int i = arr.size() - 1; i >= 0; i--) {
+        output[count[arr[i] - min] - 1] = arr[i];
+        count[arr[i] - min]--;
+    }
+    
+    for (int i = 0; i < arr.size(); i++)
+        arr[i] = output[i];
 }
         </div>
         <div class="flex-item-right">

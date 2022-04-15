@@ -1,6 +1,4 @@
 var container = document.getElementById("array");
-var elements = document.getElementsByClassName("block");
-console.log(elements);
 
 function js() {
 	var js = document.getElementById("CodeJS");
@@ -11,6 +9,7 @@ function js() {
 		document.getElementById("CodeJS").style.display = "block";
 		document.getElementById("CodeC#").style.display = "none";
 		document.getElementById("CodePy").style.display = "none";
+		document.getElementById("CodeC++").style.display = "none";
 	}
 }
 
@@ -23,6 +22,7 @@ function c() {
 		document.getElementById("CodeJS").style.display = "none";
 		document.getElementById("CodeC#").style.display = "block";
 		document.getElementById("CodePy").style.display = "none";
+		document.getElementById("CodeC++").style.display = "none";
 	}
 }
 
@@ -35,6 +35,20 @@ function python() {
 		document.getElementById("CodeJS").style.display = "none";
 		document.getElementById("CodeC#").style.display = "none";
 		document.getElementById("CodePy").style.display = "block";
+		document.getElementById("CodeC++").style.display = "none";
+	}
+}
+
+function cPlus() {
+	var js = document.getElementById("CodeC++");
+	if (js.style.display != "none") {
+		document.getElementById("CodeC++").style.display = "block";
+	}
+	else {
+		document.getElementById("CodeJS").style.display = "none";
+		document.getElementById("CodeC#").style.display = "none";
+		document.getElementById("CodePy").style.display = "none";
+		document.getElementById("CodeC++").style.display = "block";
 	}
 }
 
@@ -1140,7 +1154,7 @@ async function TernarySearch() {
 function toggle(flag) {
 	var modal = document.getElementById('myModal');
 
-	// Get the <span> element that closes the modal
+	// Get the span element that closes the modal
 	var span = document.getElementsByClassName('close')[0];
 
 	modal.style.display = 'block';
@@ -1170,6 +1184,7 @@ function success() {
 	var f = document.getElementById('container-fail');
 	f.style.display = 'none';
 }
+
 function fail() {
 	var f = document.getElementById('container-fail');
 	f.style.display = 'block';
