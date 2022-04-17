@@ -379,7 +379,7 @@ h5 {
 }
 
 h5 {
-	font-size: 1.25rem;
+	font-size: 1.8rem;
 }
 
 a {
@@ -402,10 +402,11 @@ a {
 }
 
 .container-img {
-	/* height: 15rem; */
 	border-radius: var(--borderRadius);
 	margin-bottom: 1rem;
 	height: 24rem;
+	border-style: solid;
+    border-width: 1px 1px;
 }
 
 @media screen and (max-width: 600px) {
@@ -414,6 +415,8 @@ a {
 		margin-bottom: 1rem;
 		height: 9rem;
 		width: 130px;
+		border-style: solid;
+    	border-width: 1px 1px;
 	}
 	.container-list {
 		margin-left: 4rem;
@@ -422,5 +425,8 @@ a {
 		gap: 1rem;
 		padding-bottom: 1rem;
 		grid-template-columns: 1fr 1fr;
+	}
+	h5{
+		font-size: 1.25rem;
 	}
 }

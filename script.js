@@ -355,21 +355,6 @@ function swap(el1, el2){
 	blocks[el2].childNodes[0].innerText = temp2;
 }
 
-function swap_bub(el1, el2) {
-	return new Promise((resolve) => {
-		var temp = el1.style.transform;
-		el1.style.transform = el2.style.transform;
-		el2.style.transform = temp;
-
-		window.requestAnimationFrame(function () {
-			setTimeout(() => {
-				container.insertBefore(el2, el1);
-				resolve();
-			}, sliderSpeed());
-		});
-	});
-}
-
 async function BubbleSort() {
 	disable_on_start();	
 	let blocks = document.querySelectorAll(".block");
@@ -419,7 +404,7 @@ async function InsertionSort() {
 		var j = i - 1;
 
 		var key = parseInt(blocks[i].childNodes[0].innerHTML);
-		// store i-th block height
+		// store ith block height
 		var height = blocks[i].style.height;
 		blocks[i].style.backgroundColor = "darkblue";
 
@@ -666,7 +651,7 @@ async function merge(array, start, mid, end) {
 	let blocks = document.querySelectorAll(".block");
 	blocks[start].style.backgroundColor = "yellow";
 	blocks[end].style.backgroundColor = "green";
-	// Until we reach either end of either array[p] or array[q], pick larger among
+	// until we reach either end of either array[p] or array[q] pick larger among
     // elements array[p] and array[q] and place them in the correct position
 	while (p <= mid && q <= end) {
 		if (array[p] <= array[q]) {
@@ -1077,10 +1062,9 @@ async function JumpSearch() {
 		else {
 			blocks[i].style.backgroundColor = "#add8e6";
 		}
-		// za posleden element
 		if (value == num) {
 			flag = 1;
-			blocks[j].style.backgroundColor = "#0bdb67";//vajno
+			blocks[j].style.backgroundColor = "#0bdb67";
 			break;
 		} 
 		// if element is not present

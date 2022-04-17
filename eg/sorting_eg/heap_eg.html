@@ -191,7 +191,10 @@ void heapSort(int arr[], int n)
 }
         </div>
         <div class="flex-item-right">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum optio, maiores obcaecati quasi inventore deserunt ex. Temporibus veritatis illum nihil deserunt quidem voluptatem ullam, laboriosam molestias repudiandae consectetur repellendus? Sapiente?
+            Heap sort works by visualizing the elements of the array as a special kind of complete binary tree called a heap. Heap data structure - all nodes in the tree follow the property that they are greater than their children i.e. the largest element is at the root and both its children and smaller than the root and so on. Such a heap is called a max-heap. If instead, all nodes are smaller than their children, it is called a min-heap. First step is to build max heap. To build max heap, we use recursive function called heapify. Heapify swaps elements in the tree. How Heap Sort works - when the tree satisfies max heap property, then the largest item is stored at the root node; Swap: Remove the root element and put at the end of the array (nth position) Put the last item of the tree (heap) at the vacant place; Remove: Reduce the size of the heap by 1; Heapify: Heapify the root element again so that we have the highest element at root; The process is repeated until all the items of the list are sorted.
+            <div>
+                In all cases Heap Sort has time compelexity of O(nlog n).
+            </div>
         </div>
     </div>
 </body>
